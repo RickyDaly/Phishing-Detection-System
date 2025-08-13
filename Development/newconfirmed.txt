@@ -1,0 +1,6 @@
+{'http://harmonyvips.com','harmonyvips.com', 'harmonyvips_com.html'}, 
+{'http://cocobenlemariage.com','cocobenlemariage.com', 'cocobenlemariage_com.html'}, 
+{'https://rrgoldsilchar.com','rrgoldsilchar.com', 'rrgoldsilchar_com.html'}, 
+{'https://barbaybosque.com','barbaybosque.com', 'barbaybosque_com.html'}, 
+{'https://toledocommercialpainting.net','toledocommercialpainting.net', 'toledocommercialpainting_net.html'}, 
+{'http://lvomagasine.com','lvomagasine.com', 'lvomagasine_com.html'}, 

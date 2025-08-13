@@ -1,0 +1,7 @@
+url,url_length,has_at_symbol,double_slash_in_path,has_ip,count_hyphens,count_dots,count_slashes,count_special_chars,https_in_domain,url_depth,has_sensitive_keywords,tld_type,is_similar_to_brand,dash_in_domain,digit_count,vowel_ratio,is_short_url,has_hex_chars,label
+http://harmonyvips.com,22,0,0,0,0,1,2,4,0,0,0,com,0,0,0,0.18181818181818182,0,0,1
+http://cocobenlemariage.com,27,0,0,0,0,1,2,4,0,0,0,com,0,0,0,0.3333333333333333,0,0,1
+https://rrgoldsilchar.com,25,0,0,0,0,1,2,4,0,0,0,com,0,0,0,0.16,0,0,1
+https://barbaybosque.com,24,0,0,0,0,1,2,4,0,0,0,com,0,0,0,0.25,0,0,0
+https://toledocommercialpainting.net,36,0,0,0,0,1,2,4,0,0,0,net,0,0,0,0.3055555555555556,0,0,1
+http://lvomagasine.com,22,0,0,0,0,1,2,4,0,0,0,com,0,0,0,0.2727272727272727,0,0,0
