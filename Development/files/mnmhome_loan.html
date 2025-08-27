@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Home Assistant
+  </title>
+  <meta charset="utf-8"/>
+  <link crossorigin="use-credentials" href="/manifest.json" rel="manifest"/>
+  <link href="/static/icons/favicon.ico" rel="icon"/>
+  <link crossorigin="use-credentials" href="/frontend_latest/core.59bcda486f63c5b5.js" rel="modulepreload"/>
+  <link crossorigin="use-credentials" href="/frontend_latest/app.19b027b834c71fea.js" rel="modulepreload"/>
+  <link color="#18bcf2" href="/static/icons/mask-icon.svg" rel="mask-icon"/>
+  <link href="/static/icons/favicon-apple-180x180.png" rel="apple-touch-icon"/>
+  <meta content="app-id=1099568401" name="apple-itunes-app"/>
+  <meta content="yes" name="apple-mobile-web-app-capable"/>
+  <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+  <meta content="Home Assistant" name="apple-mobile-web-app-title"/>
+  <meta content="/static/icons/browserconfig.xml" name="msapplication-config"/>
+  <meta content="yes" name="mobile-web-app-capable"/>
+  <meta content="Home Assistant" name="application-name"/>
+  <meta content="same-origin" name="referrer"/>
+  <meta content="#2980b9" name="theme-color"/>
+  <meta content="dark light" name="color-scheme"/>
+  <meta content="width=device-width,user-scalable=no,viewport-fit=cover,initial-scale=1" name="viewport"/>
+  <style>
+   body{font-family:Roboto,Noto,sans-serif;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;font-weight:400;margin:0;padding:0;height:100%}
+  </style>
+  <style>
+   html{background-color:var(--primary-background-color,#fafafa);color:var(--primary-text-color,#212121);height:100vh}@media (prefers-color-scheme:dark){html{background-color:var(--primary-background-color,#111);color:var(--primary-text-color,#e1e1e1)}}#ha-launch-screen{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center}#ha-launch-screen svg{width:112px;flex-shrink:0}#ha-launch-screen .ha-launch-screen-spacer-top{flex:1;margin-top:calc(2 * max(var(--safe-area-inset-bottom),48px) + 46px);padding-top:48px}#ha-launch-screen .ha-launch-screen-spacer-bottom{flex:1;padding-top:48px}.ohf-logo{margin:max(var(--safe-area-inset-bottom),48px) 0;display:flex;flex-direction:column;align-items:center;opacity:.66}@media (prefers-color-scheme:dark){.ohf-logo{filter:invert(1)}}
+  </style>
+ </head>
+ <body>
+  <div id="ha-launch-screen">
+   <div class="ha-launch-screen-spacer-top">
+   </div>
+   <svg viewbox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <path d="M240 224.762a15 15 0 0 1-15 15H15a15 15 0 0 1-15-15v-90c0-8.25 4.77-19.769 10.61-25.609l98.78-98.7805c5.83-5.83 15.38-5.83 21.21 0l98.79 98.7895c5.83 5.83 10.61 17.36 10.61 25.61v90-.01Z" fill="#18BCF2">
+    </path>
+    <path d="m107.27 239.762-40.63-40.63c-2.09.72-4.32 1.13-6.64 1.13-11.3 0-20.5-9.2-20.5-20.5s9.2-20.5 20.5-20.5 20.5 9.2 20.5 20.5c0 2.33-.41 4.56-1.13 6.65l31.63 31.63v-115.88c-6.8-3.3395-11.5-10.3195-11.5-18.3895 0-11.3 9.2-20.5 20.5-20.5s20.5 9.2 20.5 20.5c0 8.07-4.7 15.05-11.5 18.3895v81.27l31.46-31.46c-.62-1.96-.96-4.04-.96-6.2 0-11.3 9.2-20.5 20.5-20.5s20.5 9.2 20.5 20.5-9.2 20.5-20.5 20.5c-2.5 0-4.88-.47-7.09-1.29L129 208.892v30.88z" fill="#F2F4F9">
+    </path>
+   </svg>
+   <div class="ha-launch-screen-spacer-bottom" id="ha-launch-screen-info-box">
+   </div>
+   <div class="ohf-logo">
+    <img alt="Home Assistant is a project by the Open Home Foundation" height="46" src="/static/images/ohf-badge.svg"/>
+   </div>
+  </div>
+  <home-assistant>
+  </home-assistant>
+  <script>
+   function _ls(d,e){var i=document.createElement("script");return e&&(i.crossOrigin="use-credentials"),i.src=d,document.head.appendChild(i)}"attachShadow"in Element.prototype||(_ls("/static/polyfills/webcomponents-bundle.js",!0),_ls("/static/polyfills/lit-polyfill-support.js",!0));var isModern=/Edge?\/(12[89]|1[3-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Firefox\/(12[89]|1[3-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(109|1[1-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|(Maci|X1{2}).+ Version\/(18\.\d+|(19|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(1{2}[3-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(16[._]([6-9]|\d{2,})|(1[7-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](129|1[3-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(13\d|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(129|1[3-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|SamsungBrowser\/(2[7-9]|[3-9]\d|\d{3,})\.\d+|Home As{2}istant\/[\d.]+ \(.+; macOS (1[3-9]|[2-9]\d|\d{3,})\.\d+(\.\d+)?\)/.test(navigator.userAgent)&&"findLast"in Array.prototype
+  </script>
+  <script>
+   if(-1===navigator.userAgent.indexOf("Android")){function _pf(o,t){var n=document.createElement("link");n.rel="preload",n.as="font",n.type="font/woff2",n.href=o,n.crossOrigin="anonymous",document.head.appendChild(n)}_pf("/static/fonts/roboto/Roboto-Regular.woff2"),_pf("/static/fonts/roboto/Roboto-Medium.woff2")}
+  </script>
+  <script crossorigin="use-credentials">
+   isModern&&(import("/frontend_latest/core.59bcda486f63c5b5.js"),import("/frontend_latest/app.19b027b834c71fea.js"),window.customPanelJS="/frontend_latest/custom-panel.f3f73aedf32eea9f.js",window.latestJS=!0)
+  </script>
+  <script>
+   import("/hacsfiles/iconset.js");
+  </script>
+  <script>
+   window.latestJS||(window.customPanelJS="/frontend_es5/custom-panel.75586c46d9cea544.js",_ls("/frontend_es5/core.b2962c8f8534fc70.js",!0),_ls("/frontend_es5/app.253295e98dc78891.js",!0))
+  </script>
+  <script>
+   if (!window.latestJS) {}
+  </script>
+ </body>
+</html>

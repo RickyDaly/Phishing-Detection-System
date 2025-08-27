@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   AI Agents: A Practical Guide
+  </title>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400&display=swap');
+    
+    :root{
+      --bg: #f7f9fc;
+      --ink: #111316;
+      --muted: #6b7280;
+      --line: rgba(17,19,22,0.06);
+      --card-shadow: 0 10px 40px rgba(17,19,22,0.08);
+      --accent: #0ea5e9;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.2px;
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      line-height: 1.6;
+    }
+    
+    /* Subtle gradient + film grain layer */
+    body::before{
+      content:"";
+      position:fixed; 
+      inset:0; 
+      z-index:-2;
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(14,165,233,0.08), transparent 60%),
+                  radial-gradient(800px 400px at 80% 110%, rgba(14,165,233,0.06), transparent 60%);
+      pointer-events:none;
+    }
+    
+    body::after{
+      content:""; 
+      position:fixed; 
+      inset:0; 
+      z-index:-1; 
+      pointer-events:none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.025"/></svg>');
+      mix-blend-mode: soft-light;
+    }
+    
+    /* Tab content containers */
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .container {
+      width: 100%;
+      min-height: 100vh;
+    }
+    
+    .card {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 3rem;
+      scroll-snap-align: start;
+      opacity: 0;
+      transform: translateY(24px) scale(0.995);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+      will-change: transform, opacity;
+      position: relative;
+      content-visibility: auto;
+      contain-intrinsic-size: 800px 1000px;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+    }
+    
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    
+    .card-content {
+      max-width: 680px;
+      width: 100%;
+      position: relative;
+    }
+    
+    /* Typography System */
+    .display-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 3.25rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    
+    .subtitle {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--muted);
+      text-align: center;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .promise {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+      font-weight: 300;
+      font-style: italic;
+      opacity: 0.8;
+      letter-spacing: 0.3px;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .promise a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .promise a:hover {
+      color: var(--accent);
+    }
+    
+    .linkedin-icon {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    .promise a:hover .linkedin-icon {
+      opacity: 1;
+    }
+    
+    .section-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+    
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    
+    /* Content Styling */
+    .prose {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #374151;
+      margin-bottom: 2rem;
+      text-align: center;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 300;
+      letter-spacing: 0.1px;
+    }
+    
+    .prose strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+    
+    .prose em {
+      font-style: italic;
+      color: var(--muted);
+      font-weight: 300;
+    }
+    
+    /* Benefits Cards */
+    .benefits-container {
+      max-width: 580px;
+      margin: 0 auto;
+      margin-top: 1.5rem;
+    }
+    
+    .benefit-card {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      position: relative;
+      padding-left: 2.5rem;
+      transition: transform 0.25s ease, background-color 0.25s ease;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.6);
+    }
+    
+    .benefit-card:last-child {
+      border-bottom: none;
+    }
+    
+    .benefit-card::before {
+      content: counter(benefit-counter);
+      counter-increment: benefit-counter;
+      position: absolute;
+      left: 0;
+      top: 1.25rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-weight: 400;
+      width: 1.25rem;
+      height: 1.25rem;
+      text-align: center;
+      background: #f9fafb;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .benefits-container {
+      counter-reset: benefit-counter;
+    }
+    
+    .benefit-title {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+    
+    .benefit-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+      font-weight: 300;
+      letter-spacing: 0.1px;
+    }
+    
+    /* Navigation */
+    .nav-system {
+      position: fixed;
+      left: 2.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+    }
+    
+    .nav-item {
+      display: block;
+      margin-bottom: 2rem;
+      text-decoration: none;
+      color: #d1d5db;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: color 0.25s, transform 0.25s, opacity 0.25s;
+      opacity: 0.6;
+      cursor: pointer;
+    }
+    
+    .nav-item::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #d1d5db;
+      margin-right: 0.75rem;
+      transform: translateY(-1px);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    
+    .nav-item.active {
+      color: var(--ink);
+      opacity: 1;
+      transform: translateX(6px);
+    }
+    
+    .nav-item.active::before {
+      background: var(--accent);
+      transform: scale(1.25) translateY(-1px);
+    }
+    
+    .nav-item:hover {
+      color: var(--muted);
+      opacity: 1;
+    }
+    
+    .nav-item:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+    
+    /* Scroll Arrow - positioned in center above peek text */
+    .scroll-arrow {
+      position: absolute;
+      bottom: 4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: var(--accent);
+      opacity: 0.7;
+      z-index: 10;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      animation: subtleBounce 2s ease-in-out infinite;
+      pointer-events: none;
+      text-align: center;
+    }
+    
+    .scroll-arrow::before {
+      content: "Scroll";
+      display: block;
+      font-size: 0.7rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+      opacity: 0.8;
+    }
+    
+    .scroll-arrow:hover {
+      opacity: 1;
+      transform: translateX(-50%) translateY(2px);
+    }
+    
+    @keyframes subtleBounce {
+      0%, 100% { 
+        transform: translateX(-50%) translateY(0);
+        opacity: 0.7;
+      }
+      50% { 
+        transform: translateX(-50%) translateY(-4px);
+        opacity: 1;
+      }
+    }
+    
+    /* Spotify Integration */
+    .music-section {
+      position: fixed;
+      bottom: 3rem;
+      right: 3rem;
+      width: 320px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(17,19,22,0.03);
+      border-radius: 8px;
+      padding: 0.5rem;
+      z-index: 90;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 12px rgba(17,19,22,0.03);
+    }
+    
+    .music-section:hover {
+      opacity: 0.9;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .music-header {
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    
+    .music-title {
+      font-size: 0.7rem;
+      color: rgba(107, 114, 128, 0.6);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    
+    .music-embed {
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    /* Peek Navigation */
+    .peek {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8rem;
+      color: var(--muted);
+      opacity: 0.8;
+    }
+    
+    /* Elegant Progress Cursor */
+    .progress-cursor {
+      position: fixed;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 110;
+      pointer-events: none;
+    }
+    
+    .cursor-line {
+      width: 2px;
+      height: 240px;
+      background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(14,165,233,0.1) 20%, 
+        rgba(14,165,233,0.3) 50%, 
+        rgba(14,165,233,0.1) 80%, 
+        transparent 100%);
+      position: relative;
+    }
+    
+    .cursor-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      left: -3px;
+      top: 0;
+      box-shadow: 0 0 12px rgba(14,165,233,0.4);
+      transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 12px rgba(14,165,233,0.4);
+      }
+      50% { 
+        transform: scale(1.2);
+        box-shadow: 0 0 18px rgba(14,165,233,0.6);
+      }
+    }
+    
+    .cursor-dot.section-0 { top: 0%; }
+    .cursor-dot.section-1 { top: 25%; }
+    .cursor-dot.section-2 { top: 50%; }
+    .cursor-dot.section-3 { top: 75%; }
+    .cursor-dot.section-4 { top: 100%; }
+    
+    /* Cursor glow for hero */
+    .cursor-glow {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      pointer-events: none;
+      mix-blend-mode: soft-light;
+      filter: blur(40px);
+      background: radial-gradient(closest-side, rgba(14,165,233,.18), transparent 70%);
+      transform: translate(-50%,-50%);
+    }
+    
+    /* Accessibility & Performance */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .card {
+        padding: 4rem 2rem;
+      }
+      
+      .display-title {
+        font-size: 2.8rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .nav-system,
+      .page-counter {
+        display: none;
+      }
+      
+      .music-section {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        width: 100%;
+        margin: 2rem 0;
+        opacity: 1;
+      }
+      
+      .benefit-card {
+        padding-left: 0;
+        text-align: left;
+      }
+      
+      .peek {
+        display: none;
+      }
+    }
+  </style>
+ </head>
+ <body>
+  <div class="progress-cursor">
+   <div class="cursor-line">
+    <div class="cursor-dot section-0" id="progress-dot">
+    </div>
+   </div>
+  </div>
+  <div class="music-section">
+   <div class="music-header">
+    <div class="music-title">
+     Listen while you learn
+    </div>
+   </div>
+   <div class="music-embed">
+    <iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="" data-testid="embed-iframe" frameborder="0" height="352" loading="lazy" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX55dNU0PWnO5?utm_source=generator" style="border-radius:12px" width="100%">
+    </iframe>
+   </div>
+  </div>
+  <nav class="nav-system">
+   <a class="nav-item active" data-tab="about" href="#">
+    About
+   </a>
+   <a class="nav-item" data-tab="ai-agents" href="#">
+    AI Agents
+   </a>
+   <a class="nav-item" data-tab="mcp" href="#">
+    Model Context Protocol
+   </a>
+   <a class="nav-item" data-tab="acp" href="#">
+    Communication Protocols
+   </a>
+  </nav>
+  <!-- About Content (NEW - Default Active) -->
+  <div class="tab-content active" data-content="about">
+   <div class="container">
+    <!-- Card 1: Main Introduction -->
+    <div class="card visible" id="about-card-0">
+     <div class="card-content">
+      <h1 class="display-title">
+       AI Agents: A Practical Guide
+      </h1>
+      <div class="subtitle">
+       AI Agents, MCP, ACP, A2A — they're all new terms that can feel abstract at first. The truth is, this space is still unfolding and there's plenty more to learn. What I've done here is capture my take so far in one place, with the aim of breaking things down to what really matters.
+      </div>
+      <div class="promise">
+       By
+       <a href="https://uk.linkedin.com/in/ren%C3%A9-bossa-7669ab195" target="_blank">
+        René Bossa
+        <img alt="LinkedIn" class="linkedin-icon" src="Linkedin.png"/>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- AI Agents Content -->
+  <div class="tab-content" data-content="ai-agents">
+   <div class="container">
+    <!-- Card 1: Introduction -->
+    <div class="card visible" id="ai-card-0">
+     <div class="card-content">
+      <h1 class="display-title">
+       AI Agents
+      </h1>
+      <div class="subtitle">
+       Intelligent assistants that transform enterprise operations
+      </div>
+      <div class="promise">
+       By René Bossa
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Definition
+     </div>
+    </div>
+    <!-- Card 2: Definition -->
+    <div class="card" id="ai-card-1">
+     <div class="card-content">
+      <div class="section-number">
+       01 — Definition
+      </div>
+      <h2 class="section-title">
+       What are AI Agents?
+      </h2>
+      <div class="prose">
+       AI agents are
+       <strong>
+        intelligent assistants
+       </strong>
+       that go beyond what people have previously experienced with chatbots or traditional automation. Instead of following rigid scripts, they can understand context, make decisions within defined boundaries, and complete tasks from start to finish, often by working together with other agents or systems.
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Scope
+        </div>
+        <div class="benefit-desc">
+         They can be applied across the organisation–answering questions, processing requests, or coordinating activities between departments.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         How it works
+        </div>
+        <div class="benefit-desc">
+         Agents interpret instructions, decide the best next step, and take action by connecting to the right tools (APIs) or data.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         What it isn't
+        </div>
+        <div class="benefit-desc">
+         They aren't uncontrolled AI. Agents operate under company rules and permissions, ensuring their actions are safe and compliant.
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Value
+     </div>
+    </div>
+    <!-- Card 3: Value -->
+    <div class="card" id="ai-card-2">
+     <div class="card-content">
+      <div class="section-number">
+       02 — Value
+      </div>
+      <h2 class="section-title">
+       Why enterprises should care
+      </h2>
+      <div class="prose">
+       AI agents deliver measurable impact through efficiency, consistency, and enhanced employee and customer experiences.
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Efficiency at scale
+        </div>
+        <div class="benefit-desc">
+         Agents take on repetitive or time-consuming tasks, freeing employees to focus on higher-value work.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Consistency &amp; reliability
+        </div>
+        <div class="benefit-desc">
+         Processes are followed the same way every time, reducing errors and ensuring compliance.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Improved experiences
+        </div>
+        <div class="benefit-desc">
+         Employees and customers get quicker, smoother outcomes, without unnecessary delays or hand-offs.
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Vision
+     </div>
+    </div>
+    <!-- Card 4: Vision -->
+    <div class="card" id="ai-card-3">
+     <div class="card-content">
+      <div class="section-number">
+       03 — Vision
+      </div>
+      <h2 class="section-title">
+       Where this is heading
+      </h2>
+      <div class="prose">
+       The future brings specialised agents working seamlessly together across business functions and industries.
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Collaborating agents
+        </div>
+        <div class="benefit-desc">
+         Different specialised agents–HR, finance, IT, customer service–working together to handle complex workflows.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Seamlessly integrated
+        </div>
+        <div class="benefit-desc">
+         Agents becoming part of the everyday systems employees already use, reducing friction and complexity.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Industry-specific solutions
+        </div>
+        <div class="benefit-desc">
+         Ready-made agents tailored to sectors like banking, healthcare, or retail, built to meet regulatory requirements.
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Scenario
+     </div>
+    </div>
+    <!-- Card 5: Scenario -->
+    <div class="card" id="ai-card-4">
+     <div class="card-content">
+      <div class="section-number">
+       04 — Scenario
+      </div>
+      <h2 class="section-title">
+       Employee onboarding
+      </h2>
+      <div class="prose">
+       A new hire joins the company. Instead of HR manually coordinating every step, intelligent agents handle the process:
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         HR agent
+        </div>
+        <div class="benefit-desc">
+         creates the employee record.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         IT agent
+        </div>
+        <div class="benefit-desc">
+         sets up access and equipment.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Learning agent
+        </div>
+        <div class="benefit-desc">
+         assigns onboarding and compliance training.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Payroll agent
+        </div>
+        <div class="benefit-desc">
+         confirms salary and benefits.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         HR agent
+        </div>
+        <div class="benefit-desc">
+         provides a progress update back to the manager.
+        </div>
+       </div>
+      </div>
+      <div style="margin-top: 2rem;">
+       <h3 style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 1rem; text-align: center;">
+        With AI agents (what this means)
+       </h3>
+       <div class="benefits-container">
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Every step is coordinated automatically.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          The new hire has a smooth, timely experience.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          HR focuses on people, not admin.
+         </div>
+        </div>
+       </div>
+      </div>
+      <div style="margin-top: 2rem;">
+       <h3 style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 1rem; text-align: center;">
+        Without AI agents (what it looks like)
+       </h3>
+       <div class="benefits-container">
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          HR must chase each department manually.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Steps are often missed or delayed.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Onboarding feels slow and inconsistent.
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- MCP Content -->
+  <div class="tab-content" data-content="mcp">
+   <div class="container">
+    <!-- Card 1: Introduction -->
+    <div class="card visible" id="mcp-card-0">
+     <div class="card-content">
+      <h1 class="display-title">
+       Model Context Protocol
+      </h1>
+      <div class="subtitle">
+       A new standard for AI-enterprise integration
+      </div>
+      <div class="promise">
+       By René Bossa
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Definition
+     </div>
+    </div>
+    <!-- Card 2: Definition -->
+    <div class="card" id="mcp-card-1">
+     <div class="card-content">
+      <div class="section-number">
+       01 — Definition
+      </div>
+      <h2 class="section-title">
+       What is MCP?
+      </h2>
+      <div class="prose">
+       <strong>
+        Model Context Protocol (MCP)
+       </strong>
+       is a standard that lets applications, tools, and systems share
+       <strong>
+        context
+       </strong>
+       with large language models in a consistent way.
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Scope
+        </div>
+        <div class="benefit-desc">
+         A common format for describing data, tools and requests so AI systems can understand and use them.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         How it works
+        </div>
+        <div class="benefit-desc">
+         Defines predictable request/response shapes, discovery of available tools, and permission-aware context passing.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         What it isn't
+        </div>
+        <div class="benefit-desc">
+         Not a model or product; it doesn't replace your security or data platforms–it standardises how AI talks to them.
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Value
+     </div>
+    </div>
+    <!-- Card 3: Value -->
+    <div class="card" id="mcp-card-2">
+     <div class="card-content">
+      <div class="section-number">
+       02 — Value
+      </div>
+      <h2 class="section-title">
+       Why enterprises should care
+      </h2>
+      <div class="prose">
+       MCP changes day-to-day delivery by cutting integration effort, improving control, and avoiding lock-in.
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Speed &amp; cost
+        </div>
+        <div class="benefit-desc">
+         Reusable connectors and patterns reduce custom build time and maintenance.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Control &amp; assurance
+        </div>
+        <div class="benefit-desc">
+         Clear rules on
+         <strong>
+          what
+         </strong>
+         context can flow,
+         <strong>
+          who
+         </strong>
+         can access it, and an auditable trail.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Vendor flexibility
+        </div>
+        <div class="benefit-desc">
+         Portable integrations across models and platforms keep you free to switch as needs evolve.
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Vision
+     </div>
+    </div>
+    <!-- Card 4: Vision -->
+    <div class="card" id="mcp-card-3">
+     <div class="card-content">
+      <div class="section-number">
+       03 — Vision
+      </div>
+      <h2 class="section-title">
+       Where this is heading
+      </h2>
+      <div class="prose">
+       Standards turn pilots into platforms and enable broader collaboration.
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Interoperable agent networks
+        </div>
+        <div class="benefit-desc">
+         Multiple agents from different vendors coordinating through a shared protocol.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Certified marketplace &amp; portable policies
+        </div>
+        <div class="benefit-desc">
+         Pre-built MCP connectors and policy packs you can adopt, review, and govern.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Industry profiles
+        </div>
+        <div class="benefit-desc">
+         Sector-specific patterns (e.g., banking, healthcare) that align MCP with regulations and common workflows.
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Scenario
+     </div>
+    </div>
+    <!-- Card 5: Scenario -->
+    <div class="card" id="mcp-card-4">
+     <div class="card-content">
+      <div class="section-number">
+       04 — Scenario
+      </div>
+      <h2 class="section-title">
+       Damaged order replacement
+      </h2>
+      <div class="prose">
+       Customer: "My parcel arrived damaged." Your AI agent resolves it by calling specific MongoDB MCP tools, no direct database access from the agent.
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Locate order
+        </div>
+        <div class="benefit-desc">
+         `find` on `orders` with `{ orderNumber, email }` to return minimal fields (status, items, address).
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Check eligibility
+        </div>
+        <div class="benefit-desc">
+         `aggregate` across `orders` + `returns_policy` to confirm it's within the replacement window.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Open a case
+        </div>
+        <div class="benefit-desc">
+         `insert-one` into `service_cases` and capture the `caseId`.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Queue replacement
+        </div>
+        <div class="benefit-desc">
+         `update-one` on `orders` to set `status: "replacement_pending"` and attach `caseId`.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Confirm to customer
+        </div>
+        <div class="benefit-desc">
+         "Case SC-10492 created; replacement arriving in 3–5 working days."
+        </div>
+       </div>
+      </div>
+      <div style="margin-top: 2rem;">
+       <h3 style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 1rem; text-align: center;">
+        With MCP (what this means)
+       </h3>
+       <div class="benefits-container">
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Only approved actions (`find`, `aggregate`, `insert-one`, `update-one`) are exposed; least-privilege and easy to audit.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Config-level controls (read-only modes, allow/deny lists) reduce risk from prompt mistakes.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Central logging; swapping systems or changing schemas is contained to the MCP layer.
+         </div>
+        </div>
+       </div>
+      </div>
+      <div style="margin-top: 2rem;">
+       <h3 style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 1rem; text-align: center;">
+        Without MCP (what it would look like)
+       </h3>
+       <div class="benefits-container">
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          The AI agent or bespoke middleware needs direct DB credentials and custom code for each step.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Inconsistent guardrails and scattered logs; harder to prove who did what.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Tighter coupling to your database–schema/vendor changes trigger rewrites and increase break risk.
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- ACP Content -->
+  <div class="tab-content" data-content="acp">
+   <div class="container">
+    <!-- Card 1: Introduction -->
+    <div class="card visible" id="acp-card-0">
+     <div class="card-content">
+      <h1 class="display-title">
+       Communication Protocols
+      </h1>
+      <div class="subtitle">
+       A new standard for agent-to-agent collaboration
+      </div>
+      <div class="promise">
+       By René Bossa
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Definition
+     </div>
+    </div>
+    <!-- Card 2: Definition -->
+    <div class="card" id="acp-card-1">
+     <div class="card-content">
+      <div class="section-number">
+       01 — Definition
+      </div>
+      <h2 class="section-title">
+       What are communication protocols (ACP &amp; A2A)?
+      </h2>
+      <div class="prose">
+       Communication protocols like
+       <strong>
+        ACP (Agent Communication Protocol)
+       </strong>
+       and
+       <strong>
+        A2A (Agent-to-Agent Protocol)
+       </strong>
+       are standards that let AI agents talk to each other in a common language. They ensure agents can exchange information, delegate tasks, and collaborate, regardless of who built them or where they run.
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Scope
+        </div>
+        <div class="benefit-desc">
+         A shared rulebook so agents can work together smoothly, rather than needing custom connections each time.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         How it works
+        </div>
+        <div class="benefit-desc">
+         Agents describe their capabilities, share information in consistent formats, and follow agreed rules for secure hand-offs.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         What it isn't
+        </div>
+        <div class="benefit-desc">
+         These protocols don't make decisions or perform tasks themselves—they simply provide the framework for clear communication.
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Value
+     </div>
+    </div>
+    <!-- Card 3: Value -->
+    <div class="card" id="acp-card-2">
+     <div class="card-content">
+      <div class="section-number">
+       02 — Value
+      </div>
+      <h2 class="section-title">
+       Why enterprises should care
+      </h2>
+      <div class="prose">
+       Communication protocols transform collaboration by enabling faster onboarding, better control, and vendor flexibility.
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Speed &amp; cost savings
+        </div>
+        <div class="benefit-desc">
+         Standard connections mean faster onboarding of new agents without expensive custom integration.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Control &amp; compliance
+        </div>
+        <div class="benefit-desc">
+         Clear rules define what information can be shared, who can access it, and provide an auditable record of activity.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Flexibility
+        </div>
+        <div class="benefit-desc">
+         Agents from different vendors can work together, helping avoid lock-in and allowing the business to evolve without major rewiring.
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Vision
+     </div>
+    </div>
+    <!-- Card 4: Vision -->
+    <div class="card" id="acp-card-3">
+     <div class="card-content">
+      <div class="section-number">
+       03 — Vision
+      </div>
+      <h2 class="section-title">
+       Where this is heading
+      </h2>
+      <div class="prose">
+       Standards enable seamless collaboration across business functions and vendor ecosystems.
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Connected agent ecosystems
+        </div>
+        <div class="benefit-desc">
+         HR, finance, IT, and customer service agents all collaborating seamlessly within one business.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Trusted marketplaces
+        </div>
+        <div class="benefit-desc">
+         Pre-built, certified agents available "off the shelf" that can plug into existing systems with confidence.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Industry alignment
+        </div>
+        <div class="benefit-desc">
+         Communication patterns tailored for sectors like banking, healthcare, or retail, ensuring agents follow regulations and common workflows.
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+     <div class="peek">
+      Next up: Scenario
+     </div>
+    </div>
+    <!-- Card 5: Scenario -->
+    <div class="card" id="acp-card-4">
+     <div class="card-content">
+      <div class="section-number">
+       04 — Scenario
+      </div>
+      <h2 class="section-title">
+       Customer refund handling
+      </h2>
+      <div class="prose">
+       A customer requests a refund. Instead of a single system handling everything, different agents step in through a communication protocol:
+      </div>
+      <div class="benefits-container">
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Customer agent
+        </div>
+        <div class="benefit-desc">
+         captures the request.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Finance agent
+        </div>
+        <div class="benefit-desc">
+         validates payment details.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Compliance agent
+        </div>
+        <div class="benefit-desc">
+         checks refund policy rules.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Logistics agent
+        </div>
+        <div class="benefit-desc">
+         confirms the return of goods.
+        </div>
+       </div>
+       <div class="benefit-card">
+        <div class="benefit-title">
+         Customer agent
+        </div>
+        <div class="benefit-desc">
+         provides a unified update back to the customer.
+        </div>
+       </div>
+      </div>
+      <div style="margin-top: 2rem;">
+       <h3 style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 1rem; text-align: center;">
+        With ACP / A2A (what this means)
+       </h3>
+       <div class="benefits-container">
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Each agent knows what the others can do and passes tasks securely.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          The business has a clear record of who did what.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Agents from different vendors work together without extra engineering.
+         </div>
+        </div>
+       </div>
+      </div>
+      <div style="margin-top: 2rem;">
+       <h3 style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 1rem; text-align: center;">
+        Without ACP / A2A (what it would look like)
+       </h3>
+       <div class="benefits-container">
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Each connection requires custom coding.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Security and logging vary by system, making compliance difficult.
+         </div>
+        </div>
+        <div class="benefit-card">
+         <div class="benefit-desc">
+          Changes to vendors or systems cause costly delays and rewrites.
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+   let currentCard = 0;
+    let currentTab = 'about';
+
+    function scrollToCard(index) {
+      currentCard = index;
+      const activeTabContent = document.querySelector('.tab-content.active');
+      const card = activeTabContent.querySelector(`#${currentTab}-card-${index}`);
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      // Update progress cursor
+      document.getElementById('progress-dot').className = `cursor-dot section-${index}`;
+    }
+
+    function switchTab(tabId) {
+      // Remove active class from all nav items and tab content
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // Add active class to clicked nav item and corresponding content
+      document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+      document.querySelector(`[data-content="${tabId}"]`).classList.add('active');
+      
+      currentTab = tabId;
+      currentCard = 0;
+      
+      document.getElementById('progress-dot').className = 'cursor-dot section-0';
+      
+      // Initialize visibility for the new tab
+      updateVisibleCards();
+    }
+
+    function updateVisibleCards() {
+      const activeTabContent = document.querySelector('.tab-content.active');
+      if (!activeTabContent) return;
+      
+      const cards = activeTabContent.querySelectorAll('.card');
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const progressDot = document.getElementById('progress-dot');
+      
+      cards.forEach((card, index) => {
+        const cardTop = card.offsetTop;
+        const cardBottom = cardTop + card.offsetHeight;
+        const isVisible = scrollPosition + windowHeight > cardTop + 200;
+        
+        if (isVisible) {
+          card.classList.add('visible');
+        }
+        
+        // Update active nav and current card
+        if (scrollPosition + windowHeight / 2 >= cardTop && scrollPosition + windowHeight / 2 <= cardBottom) {
+          if (currentCard !== index) {
+            currentCard = index;
+            // Update progress cursor
+            progressDot.className = `cursor-dot section-${index}`;
+          }
+        }
+      });
+    }
+
+    // Add click event listeners to nav items
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const tabId = item.getAttribute('data-tab');
+          switchTab(tabId);
+        });
+      });
+      
+      // Initialize first tab
+      updateVisibleCards();
+    });
+
+    // Progress bar at top
+    const bar = document.createElement('div');
+    bar.style.cssText = 'position:fixed;left:0;top:0;height:3px;background:#0ea5e9;width:0;z-index:120;transition:width .2s ease';
+    document.body.appendChild(bar);
+    
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const p = (h.scrollTop)/(h.scrollHeight - h.clientHeight);
+      bar.style.width = (p*100) + '%';
+      updateVisibleCards();
+    });
+
+    // Cursor glow for hero cards
+    document.addEventListener('DOMContentLoaded', () => {
+      const heroCards = document.querySelectorAll('[id$="-card-0"]');
+      heroCards.forEach(card => {
+        const glow = document.createElement('div'); 
+        glow.className='cursor-glow';
+        card.appendChild(glow);
+        
+        card.addEventListener('pointermove', (e) => {
+          const rect = card.getBoundingClientRect();
+          glow.style.left = (e.clientX - rect.left) + 'px';
+          glow.style.top = (e.clientY - rect.top) + 'px';
+        });
+      });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      const activeTabContent = document.querySelector('.tab-content.active');
+      const maxCards = activeTabContent ? activeTabContent.querySelectorAll('.card').length - 1 : 0;
+      
+      if (e.key === 'ArrowDown' && currentCard < maxCards) {
+        e.preventDefault();
+        scrollToCard(currentCard + 1);
+      } else if (e.key === 'ArrowUp' && currentCard > 0) {
+        e.preventDefault();
+        scrollToCard(currentCard - 1);
+      } else if (e.key === ' ') {
+        e.preventDefault();
+        if (currentCard < maxCards) {
+          scrollToCard(currentCard + 1);
+        } else {
+          scrollToCard(0);
+        }
+      }
+    });
+  </script>
+ </body>
+</html>

